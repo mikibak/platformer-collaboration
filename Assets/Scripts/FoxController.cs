@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FoxController : MonoBehaviour
 {
@@ -37,10 +38,19 @@ public class FoxController : MonoBehaviour
             Jump();
         }
         //Debug.DrawRay(transform.position, rayLength * Vector3.down, Color.white, 1, false);
+
+
+        //Restart poziomu po wypadnieciu z mapy
+        //w przyszlosci pewnie do zmiany - ustawienie jakiegos ekranu game over
+        if(transform.position.y < -5)
+        {
+            SceneManager.LoadScene("188555_188968_188593");
+        }
     }
 
     private bool isGrounded()
     {
+        //do zmiany ??? co to za sposob wgl???
         return Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
     }
 
