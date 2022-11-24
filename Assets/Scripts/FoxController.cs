@@ -27,18 +27,17 @@ public class FoxController : MonoBehaviour
     // Update is called once per frame
     //GetKey(KeyCode.RightArrow
 
-    void Update()
+    void FixedUpdate()
     {
+        //1 gdy w prawo, -1 gdy w lewo, 0 gdy brak inputu
         moveDir = Input.GetAxis("Horizontal");
 
-        transform.Translate(moveDir * moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
+        transform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, 0.0f, 0.0f, Space.World);
         
         if (Input.GetMouseButtonDown(0)||Input.GetKey(KeyCode.Space))
         {
             Jump();
         }
-        //Debug.DrawRay(transform.position, rayLength * Vector3.down, Color.white, 1, false);
-
 
         //Restart poziomu po wypadnieciu z mapy
         //w przyszlosci pewnie do zmiany - ustawienie jakiegos ekranu game over
@@ -48,7 +47,7 @@ public class FoxController : MonoBehaviour
         }
 
         if(jumpCooldown > 0) {
-            jumpCooldown -= Time.deltaTime;
+            jumpCooldown -= Time.fixedDeltaTime;
         }  
     }
 
