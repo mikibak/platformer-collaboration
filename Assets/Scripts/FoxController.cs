@@ -10,6 +10,7 @@ public class FoxController : MonoBehaviour
     private Rigidbody2D rigidBody;
     public LayerMask groundLayer;
     public static float rayLength = 0.25f;
+    private float moveDir = 0;
     // Start is called before the first frame update
 
     private void Awake()
@@ -23,16 +24,13 @@ public class FoxController : MonoBehaviour
 
     // Update is called once per frame
     //GetKey(KeyCode.RightArrow
+
     void Update()
     {
-        if(Input.GetAxis("Horizontal")>0)
-        {
-            transform.Translate(moveSpeed*Time.deltaTime, 0.0f, 0.0f, Space.World);
-        }
-        if (Input.GetAxis("Horizontal")<0)
-        {
-            transform.Translate(-moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
-        }
+        moveDir = Input.GetAxis("Horizontal");
+
+        transform.Translate(moveDir * moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
+        
         if (Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
