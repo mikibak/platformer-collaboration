@@ -11,6 +11,8 @@ public class FoxController : MonoBehaviour
     public LayerMask groundLayer;
     public static float rayLength = 0.25f;
     private float moveDir = 0;
+    [SerializeField] private float jumpCooldown = 0;
+    [SerializeField] private float maxJumpCooldown = 1;
     // Start is called before the first frame update
 
     private void Awake()
@@ -31,7 +33,7 @@ public class FoxController : MonoBehaviour
 
         transform.Translate(moveDir * moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
         
-        if (Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0)||Input.GetKey(KeyCode.Space))
         {
             Jump();
         }
@@ -44,6 +46,10 @@ public class FoxController : MonoBehaviour
         {
             SceneManager.LoadScene("188555_188968_188593");
         }
+
+        if(jumpCooldown > 0) {
+            jumpCooldown -= Time.deltaTime;
+        }  
     }
 
     private bool isGrounded()
@@ -54,10 +60,11 @@ public class FoxController : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded())
+        if (isGrounded() && jumpCooldown <= 0 && rigidBody.velocity.y == 0)
         {
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             Debug.Log("jumping");
+            jumpCooldown = maxJumpCooldown;
         }
     }
 }

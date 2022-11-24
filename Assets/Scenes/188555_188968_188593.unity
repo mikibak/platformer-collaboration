@@ -1392,6 +1392,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: -4221735247848607196, guid: 62fcba1886ad99d42b9f730f00db375b, type: 3}
+      propertyPath: maxJumpCooldown
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1351738799831187445, guid: 62fcba1886ad99d42b9f730f00db375b, type: 3}
       propertyPath: m_Name
       value: Fox
