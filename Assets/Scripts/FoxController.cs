@@ -8,16 +8,21 @@ public class FoxController : MonoBehaviour
     [SerializeField] private float moveSpeed = 0.1f;
     public float jumpForce = 6.0f;
     private Rigidbody2D rigidBody;
+    private Animator animator;
     public LayerMask groundLayer;
     public static float rayLength = 0.25f;
     private float moveDir = 0;
     [SerializeField] private float jumpCooldown = 0;
     [SerializeField] private float maxJumpCooldown = 1;
+
+    private bool isWalking = false;
+    private bool isFacingRight=true;
     // Start is called before the first frame update
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
@@ -29,10 +34,18 @@ public class FoxController : MonoBehaviour
 
     void FixedUpdate()
     {
+        isWalking = false;
         //1 gdy w prawo, -1 gdy w lewo, 0 gdy brak inputu
         moveDir = Input.GetAxis("Horizontal");
 
         transform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, 0.0f, 0.0f, Space.World);
+
+        //animacje
+        if(moveDir!=0)
+        {
+            isWalking = true;
+        }
+        if ((moveDir < 0 && isFacingRight) || (moveDir > 0 && !isFacingRight)) Flip();
         
         if (Input.GetMouseButtonDown(0)||Input.GetKey(KeyCode.Space))
         {
@@ -48,12 +61,16 @@ public class FoxController : MonoBehaviour
 
         if(jumpCooldown > 0) {
             jumpCooldown -= Time.fixedDeltaTime;
-        }  
+        }
+
+        //ustawienie zmiennych dla animatora
+        animator.SetBool("isGrounded", isGrounded());
+        animator.SetBool("isWalking", isWalking);
     }
 
     private bool isGrounded()
     {
-        //do zmiany ??? co to za sposob wgl???
+        //do zmiany moze
         return Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
     }
 
@@ -65,5 +82,14 @@ public class FoxController : MonoBehaviour
             Debug.Log("jumping");
             jumpCooldown = maxJumpCooldown;
         }
+    }
+
+    //Funkcja obracajaca spritea gracza
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 thescale = transform.localScale;
+        thescale.x *= (-1);
+        transform.localScale= thescale;
     }
 }
