@@ -17,6 +17,8 @@ public class FoxController : MonoBehaviour
 
     private bool isWalking = false;
     private bool isFacingRight=true;
+
+    public HealthController healthController;
     // Start is called before the first frame update
 
     private void Awake()
@@ -52,9 +54,14 @@ public class FoxController : MonoBehaviour
             Jump();
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            healthController.TakeDamage(1);
+        }
+
         //Restart poziomu po wypadnieciu z mapy
         //w przyszlosci pewnie do zmiany - ustawienie jakiegos ekranu game over
-        if(transform.position.y < -5)
+        if (transform.position.y < -5)
         {
             SceneManager.LoadScene("188555_188968_188593");
         }
