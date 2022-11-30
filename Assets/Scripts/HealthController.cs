@@ -12,7 +12,7 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        healthBar.SetMaxHealt(health);
+        healthBar.SetMaxHealth(health);
     }
 
     // Update is called once per frame

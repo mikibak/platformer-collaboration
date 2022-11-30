@@ -19,12 +19,15 @@ public class EnemyController : MonoBehaviour
     public float timerAttacks = 0;
 
     public HealthController PlayerHealthController;
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = durationOfCycle;
         PlayerHealthController = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthController>();
+        healthBar.SetMaxHealth(health);
+        healthBar.SetHealth(health);
     }
 
     // Update is called once per frame
@@ -67,6 +70,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage()
     {
         health--;
+        healthBar.SetHealth(health);
         Debug.Log("Enemy health: " + health.ToString());
         if (health <= 0)
         {
