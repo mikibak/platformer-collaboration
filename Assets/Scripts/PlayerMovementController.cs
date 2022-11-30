@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FoxController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 0.1f;
     public float jumpForce = 6.0f;
@@ -81,7 +81,6 @@ public class FoxController : MonoBehaviour
         if (isGrounded() && jumpCooldown <= 0 && rigidBody.velocity.y == 0)
         {
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            Debug.Log("jumping");
             jumpCooldown = maxJumpCooldown;
         }
     }
