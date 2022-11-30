@@ -27,4 +27,12 @@ public class HealthController : MonoBehaviour
 
         healthBar.SetHealth(health);
     }
+
+    public void AddHealth(int healthAdded)
+    {
+
+        if(health != maxHealth) health += healthAdded;
+
+        healthBar.SetHealth(health);
+    }
 }

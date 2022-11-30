@@ -5,11 +5,13 @@ using UnityEngine;
 public class MoneyController : MonoBehaviour
 {
     private int score = 0;
+    public ScoreManager scoreManager;
     
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Bonus")) {
             score += 1;
             Debug.Log( "Score: " + score );
+            scoreManager.AddPoints(1);
             other.gameObject.SetActive( false );
         }
     }
