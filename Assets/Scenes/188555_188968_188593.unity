@@ -240,6 +240,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 796601106}
     m_Modifications:
+    - target: {fileID: 700247336988619857, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 700247336988619857, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6136670767094011888, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -287,6 +295,22 @@ PrefabInstance:
     - target: {fileID: 6136670767094011891, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
       propertyPath: m_Name
       value: EnemyBettle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486654336440403693, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486654336440403693, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849895646585999082, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849895646585999082, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -3554,6 +3578,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 796601106}
     m_Modifications:
+    - target: {fileID: 700247336988619857, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 700247336988619857, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6136670767094011888, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3601,6 +3633,22 @@ PrefabInstance:
     - target: {fileID: 6136670767094011891, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
       propertyPath: m_Name
       value: EnemyBettle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486654336440403693, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486654336440403693, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849895646585999082, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849895646585999082, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

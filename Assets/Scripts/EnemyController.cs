@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
 
     public HealthController PlayerHealthController;
     public HealthBar healthBar;
+    public HealthBar cooldownBar;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class EnemyController : MonoBehaviour
         PlayerHealthController = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthController>();
         healthBar.SetMaxHealth(health);
         healthBar.SetHealth(health);
+        cooldownBar.SetMaxHealth(timeBetweenAttacks);
+        cooldownBar.SetHealth(timeBetweenAttacks);
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class EnemyController : MonoBehaviour
     {
         timer -= Time.deltaTime;
         timerAttacks -= Time.deltaTime;
+        cooldownBar.SetHealth(timeBetweenAttacks - Mathf.Clamp(timerAttacks, 0f, timeBetweenAttacks));
         if (timer <= 0) ChangeMovement();
 
         if (direction == 0)
