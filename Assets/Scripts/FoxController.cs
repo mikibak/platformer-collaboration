@@ -54,11 +54,6 @@ public class FoxController : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            healthController.TakeDamage(1);
-        }
-
         //Restart poziomu po wypadnieciu z mapy
         //w przyszlosci pewnie do zmiany - ustawienie jakiegos ekranu game over
         if (transform.position.y < -5)
