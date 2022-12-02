@@ -10,13 +10,18 @@ public class FightController : MonoBehaviour
     Vector3 enemyPosition;
     public EnemyController enemyController;
     float closestDist;
-    float attackCooldown = 5;
+    float attackCooldown = 2;
     float timer = 0;
+    public ParticleSystem gunTrail;
+    private ParticleSystem.VelocityOverLifetimeModule velocityModule;
+    public GameObject gun;
+
     
     // Start is called before the first frame update
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        velocityModule = gunTrail.velocityOverLifetime;
     }
 
     // Update is called once per frame
@@ -28,6 +33,18 @@ public class FightController : MonoBehaviour
             Debug.Log("attacking closest enemy");
             GameObject target = GetClosestEnemy();
             enemyController = target.GetComponent<EnemyController>();
+            Vector3 targetDirection = target.transform.position - transform.position;
+
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 2*Mathf.PI, 0.0f);
+
+            velocityModule.x = newDirection.x;
+            velocityModule.y = newDirection.y;
+            velocityModule.z = newDirection.z;
+
+            //may be used to target attacks on enemy, not in the general direction
+            //velocityModule.speedModifierMultiplier = targetDirection.magnitude;
+
+            gunTrail.Play();
 
             enemyController.TakeDamage();
             timer = attackCooldown;

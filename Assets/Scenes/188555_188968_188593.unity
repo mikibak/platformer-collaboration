@@ -3557,6 +3557,70 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: VelocityModule.inWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: ShapeModule.alignToDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: VelocityModule.orbitalX.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: VelocityModule.speedModifier.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 30647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 29684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.r
+      value: 0.9056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572822923427993324, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5590058249209089474, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
       propertyPath: keysText
       value: 
@@ -3625,10 +3689,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6868472231772240958, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 743f876e520e97c4397ab87a6087c0fd, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
