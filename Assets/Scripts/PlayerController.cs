@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         deathText.SetActive(true);
         Debug.Log("zgon");
         //after 5 seconds restarting the level
-        Invoke("Restart", 5);
+        Invoke("Restart", 2);
     }
 
     private void Restart()
@@ -137,6 +137,18 @@ public class PlayerController : MonoBehaviour
         {
             scoreManager.AddKey();
             other.gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent( other.transform );
+        }
+    }
+
+    private void OnTriggerExit2D( Collider2D other ) {
+        if (other.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent( null );
         }
     }
 
