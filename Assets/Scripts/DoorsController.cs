@@ -9,7 +9,7 @@ public class DoorsController : MonoBehaviour
     public GameObject levelCompletedText;
     public GameObject DoorsUnlockedText;
     public GameObject DoorsLockedText;
-
+    public float timeOfMessage =2;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,7 +23,7 @@ public class DoorsController : MonoBehaviour
         else if(!isUnlocked)
         {
             DoorsLockedText.SetActive(true);
-            Invoke("HideTextLocked", 2);
+            Invoke("HideTextLocked", timeOfMessage);
         }
     }
 
@@ -32,7 +32,7 @@ public class DoorsController : MonoBehaviour
         isUnlocked = true;
         doorsAnimator.SetBool("AllKeys", true);
         DoorsUnlockedText.SetActive(true);
-        Invoke("HideTextUnlocked", 2);
+        Invoke("HideTextUnlocked", timeOfMessage);
     }
 
     public void HideTextUnlocked()

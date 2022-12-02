@@ -26,7 +26,7 @@ public class FightController : MonoBehaviour
         if(Input.GetKey(KeyCode.P) && timer <=0)
         {
             Debug.Log("attacking closest enemy");
-            GameObject target = GetClosestEnemy(enemies);
+            GameObject target = GetClosestEnemy();
             enemyController = target.GetComponent<EnemyController>();
 
             enemyController.TakeDamage();
@@ -38,7 +38,7 @@ public class FightController : MonoBehaviour
         }
     }
 
-    public GameObject GetClosestEnemy(GameObject[] enemies)
+    public GameObject GetClosestEnemy()
     {
         GameObject target = null;
         currentPosition = transform.position;
