@@ -7,6 +7,9 @@ public class DoorsController : MonoBehaviour
     public bool isUnlocked;
     public Animator doorsAnimator;
     public GameObject levelCompletedText;
+    public GameObject DoorsUnlockedText;
+    public GameObject DoorsLockedText;
+
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -14,9 +17,13 @@ public class DoorsController : MonoBehaviour
         if (other.CompareTag("Player") && isUnlocked)
         {
             doorsAnimator.SetBool("Entering", true);
-            Debug.Log("Level complete");
             other.gameObject.SetActive(false);
             levelCompletedText.SetActive(true);
+        }
+        else if(!isUnlocked)
+        {
+            DoorsLockedText.SetActive(true);
+            Invoke("HideTextLocked", 2);
         }
     }
 
@@ -24,5 +31,17 @@ public class DoorsController : MonoBehaviour
     {
         isUnlocked = true;
         doorsAnimator.SetBool("AllKeys", true);
+        DoorsUnlockedText.SetActive(true);
+        Invoke("HideTextUnlocked", 2);
+    }
+
+    public void HideTextUnlocked()
+    {
+        DoorsUnlockedText.SetActive(false);
+    }
+
+    public void HideTextLocked()
+    {
+        DoorsLockedText.SetActive(false);
     }
 }

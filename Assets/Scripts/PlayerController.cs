@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    //movement
     [SerializeField] private float moveSpeed = 0.1f;
     public float jumpForce = 6.0f;
     private Rigidbody2D rigidBody;
@@ -15,12 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpCooldown = 0;
     [SerializeField] private float maxJumpCooldown = 1;
 
+    //animation
     private bool isWalking = false;
     private bool isFacingRight = true;
-    public GameObject deathText;
 
+    //score and death
+    public GameObject deathText;
     private int score = 0;
-    private int keysFound = 0;
     private const int maxKeys = 3;
     public ScoreManager scoreManager;
 
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth;
     public int health;
     public HealthBar healthBar;
-    // Start is called before the first frame update
+
 
     private void Awake()
     {
@@ -43,8 +45,6 @@ public class PlayerController : MonoBehaviour
         healthBar.SetMaxHealth(health);
     }
 
-    // Update is called once per frame
-    //GetKey(KeyCode.RightArrow
 
     void FixedUpdate()
     {
@@ -54,35 +54,35 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, 0.0f, 0.0f, Space.World);
 
-        //animacje
+        //Animations
         if (moveDir != 0)
         {
             isWalking = true;
         }
         if ((moveDir < 0 && isFacingRight) || (moveDir > 0 && !isFacingRight)) Flip();
 
+        //jumping
         if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space))
         {
             Jump();
         }
-
-        //Restart poziomu po wypadnieciu z mapy
-        //w przyszlosci pewnie do zmiany - ustawienie jakiegos ekranu game over
-        if (transform.position.y < -5)
-        {
-            Death();
-        }
-
         if (jumpCooldown > 0)
         {
             jumpCooldown -= Time.fixedDeltaTime;
         }
 
-        //ustawienie zmiennych dla animatora
+        //death when player falls out of map 
+        if (transform.position.y < -5)
+        {
+            Death();
+        }
+
+        //settings variables for animator
         animator.SetBool("isGrounded", isGrounded());
         animator.SetBool("isWalking", isWalking);
     }
 
+    //function checking is player is grounded
     private bool isGrounded()
     {
         //do zmiany moze
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Funkcja obracajaca spritea gracza
+    //Function fliping player sprite
     private void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -107,11 +107,13 @@ public class PlayerController : MonoBehaviour
         transform.localScale = thescale;
     }
 
+
     public void Death()
     {
         this.gameObject.SetActive(false);
         deathText.SetActive(true);
         Debug.Log("zgon");
+        //after 5 seconds restarting the level
         Invoke("Restart", 5);
     }
 
@@ -133,7 +135,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Key"))
         {
-            keysFound += 1;
             scoreManager.AddKey();
             other.gameObject.SetActive(false);
         }
@@ -142,7 +143,6 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-
         healthBar.SetHealth(health);
 
         if (health == 0)
@@ -153,9 +153,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddHealth(int healthAdded)
     {
-
         if (health != maxHealth) health += healthAdded;
-
         healthBar.SetHealth(health);
     }
 }

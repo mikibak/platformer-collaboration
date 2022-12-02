@@ -19,12 +19,6 @@ public class ScoreManager : MonoBehaviour
         keysText.text = "KEYS: " + keys.ToString() + "/" + maxKeys.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddPoints(int points)
     {
         score += points;
