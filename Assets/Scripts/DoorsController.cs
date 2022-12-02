@@ -6,6 +6,8 @@ public class DoorsController : MonoBehaviour
 {
     public bool isUnlocked;
     public Animator doorsAnimator;
+    public GameObject levelCompletedText;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,6 +16,7 @@ public class DoorsController : MonoBehaviour
             doorsAnimator.SetBool("Entering", true);
             Debug.Log("Level complete");
             other.gameObject.SetActive(false);
+            levelCompletedText.SetActive(true);
         }
     }
 

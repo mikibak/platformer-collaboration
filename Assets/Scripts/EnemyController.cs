@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     public float timer;
     public float timerAttacks = 0;
 
-    public HealthController PlayerHealthController;
+    public PlayerController playerController;
     public HealthBar healthBar;
     public HealthBar cooldownBar;
 
@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         timer = durationOfCycle;
-        PlayerHealthController = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthController>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         healthBar.SetMaxHealth(health);
         healthBar.SetHealth(health);
         cooldownBar.SetMaxHealth(timeBetweenAttacks);
@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Player") && timerAttacks <= 0)
         {
             Debug.Log("attacking player");
-            PlayerHealthController.TakeDamage(1);
+            playerController.TakeDamage(1);
             timerAttacks = timeBetweenAttacks;
         }
         else if(timerAttacks > 0 && other.CompareTag("Player"))

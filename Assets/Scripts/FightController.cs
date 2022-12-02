@@ -5,7 +5,7 @@ using UnityEngine;
 public class FightController : MonoBehaviour
 {
     public GameObject[] enemies;
-    public HealthController healthController;
+    public PlayerController playerController;
     Vector3 currentPosition;
     Vector3 enemyPosition;
     public EnemyController enemyController;

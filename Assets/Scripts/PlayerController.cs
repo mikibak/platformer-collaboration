@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovementController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 0.1f;
     public float jumpForce = 6.0f;
@@ -16,11 +16,18 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float maxJumpCooldown = 1;
 
     private bool isWalking = false;
-    private bool isFacingRight=true;
+    private bool isFacingRight = true;
     public GameObject deathText;
 
+    private int score = 0;
+    private int keysFound = 0;
+    private const int maxKeys = 3;
+    public ScoreManager scoreManager;
 
-    public HealthController healthController;
+    //health
+    public int maxHealth;
+    public int health;
+    public HealthBar healthBar;
     // Start is called before the first frame update
 
     private void Awake()
@@ -30,7 +37,10 @@ public class PlayerMovementController : MonoBehaviour
     }
     void Start()
     {
-        
+        scoreManager.SetMaxKeys(maxKeys);
+
+        health = maxHealth;
+        healthBar.SetMaxHealth(health);
     }
 
     // Update is called once per frame
@@ -45,13 +55,13 @@ public class PlayerMovementController : MonoBehaviour
         transform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, 0.0f, 0.0f, Space.World);
 
         //animacje
-        if(moveDir!=0)
+        if (moveDir != 0)
         {
             isWalking = true;
         }
         if ((moveDir < 0 && isFacingRight) || (moveDir > 0 && !isFacingRight)) Flip();
-        
-        if (Input.GetMouseButtonDown(0)||Input.GetKey(KeyCode.Space))
+
+        if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space))
         {
             Jump();
         }
@@ -63,7 +73,8 @@ public class PlayerMovementController : MonoBehaviour
             Death();
         }
 
-        if(jumpCooldown > 0) {
+        if (jumpCooldown > 0)
+        {
             jumpCooldown -= Time.fixedDeltaTime;
         }
 
@@ -93,7 +104,7 @@ public class PlayerMovementController : MonoBehaviour
         isFacingRight = !isFacingRight;
         Vector3 thescale = transform.localScale;
         thescale.x *= (-1);
-        transform.localScale= thescale;
+        transform.localScale = thescale;
     }
 
     public void Death()
@@ -108,5 +119,43 @@ public class PlayerMovementController : MonoBehaviour
     {
         SceneManager.LoadScene("188555_188968_188593");
         deathText.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bonus"))
+        {
+            score += 1;
+            Debug.Log("Score: " + score);
+            scoreManager.AddPoints(1);
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("Key"))
+        {
+            keysFound += 1;
+            scoreManager.AddKey();
+            other.gameObject.SetActive(false);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        healthBar.SetHealth(health);
+
+        if (health == 0)
+        {
+            Death();
+        }
+    }
+
+    public void AddHealth(int healthAdded)
+    {
+
+        if (health != maxHealth) health += healthAdded;
+
+        healthBar.SetHealth(health);
     }
 }
