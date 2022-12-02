@@ -22,6 +22,8 @@ public class EnemyController : MonoBehaviour
     public HealthBar healthBar;
     public HealthBar cooldownBar;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,8 +80,19 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Enemy health: " + health.ToString());
         if (health <= 0)
         {
-            Debug.Log("Enemy dead");
-            this.gameObject.SetActive(false);
+            Invoke("DestroyEnemy", 0.5f);
+            Death();
         }
+    }
+
+    private void Death()
+    {
+        Debug.Log("Enemy dead");
+        animator.SetBool("isDead", true);
+    }
+
+    private void DestroyEnemy()
+    {
+        this.gameObject.SetActive(false);
     }
 }

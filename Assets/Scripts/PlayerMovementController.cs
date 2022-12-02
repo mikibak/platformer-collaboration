@@ -17,6 +17,8 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool isWalking = false;
     private bool isFacingRight=true;
+    public GameObject deathText;
+
 
     public HealthController healthController;
     // Start is called before the first frame update
@@ -58,7 +60,7 @@ public class PlayerMovementController : MonoBehaviour
         //w przyszlosci pewnie do zmiany - ustawienie jakiegos ekranu game over
         if (transform.position.y < -5)
         {
-            SceneManager.LoadScene("188555_188968_188593");
+            Death();
         }
 
         if(jumpCooldown > 0) {
@@ -92,5 +94,19 @@ public class PlayerMovementController : MonoBehaviour
         Vector3 thescale = transform.localScale;
         thescale.x *= (-1);
         transform.localScale= thescale;
+    }
+
+    public void Death()
+    {
+        this.gameObject.SetActive(false);
+        deathText.SetActive(true);
+        Debug.Log("zgon");
+        Invoke("Restart", 5);
+    }
+
+    private void Restart()
+    {
+        SceneManager.LoadScene("188555_188968_188593");
+        deathText.SetActive(false);
     }
 }

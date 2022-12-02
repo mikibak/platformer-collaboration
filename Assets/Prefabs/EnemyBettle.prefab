@@ -137,7 +137,7 @@ Transform:
   m_Children:
   - {fileID: 6859958201871239528}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6136670767094011889
 SpriteRenderer:
@@ -214,6 +214,7 @@ MonoBehaviour:
   PlayerHealthController: {fileID: 0}
   healthBar: {fileID: 5003719591494281302}
   cooldownBar: {fileID: 3108327312598784746}
+  animator: {fileID: 6136670767094011887}
 --- !u!95 &6136670767094011887
 Animator:
   serializedVersion: 4
