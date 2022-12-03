@@ -48,38 +48,41 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        isWalking = false;
-        //1 gdy w prawo, -1 gdy w lewo, 0 gdy brak inputu
-        moveDir = Input.GetAxis("Horizontal");
-
-        transform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, 0.0f, 0.0f, Space.World);
-
-        //Animations
-        if (moveDir != 0)
+        if (GameManager.instance.currentGameState == GameState.GS_GAME)
         {
-            isWalking = true;
-        }
-        if ((moveDir < 0 && isFacingRight) || (moveDir > 0 && !isFacingRight)) Flip();
+            isWalking = false;
+            //1 gdy w prawo, -1 gdy w lewo, 0 gdy brak inputu
+            moveDir = Input.GetAxis("Horizontal");
 
-        //jumping
-        if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space))
-        {
-            Jump();
-        }
-        if (jumpCooldown > 0)
-        {
-            jumpCooldown -= Time.fixedDeltaTime;
-        }
+            transform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, 0.0f, 0.0f, Space.World);
 
-        //death when player falls out of map 
-        if (transform.position.y < -5)
-        {
-            Death();
-        }
+            //Animations
+            if (moveDir != 0)
+            {
+                isWalking = true;
+            }
+            if ((moveDir < 0 && isFacingRight) || (moveDir > 0 && !isFacingRight)) Flip();
 
-        //settings variables for animator
-        animator.SetBool("isGrounded", isGrounded());
-        animator.SetBool("isWalking", isWalking);
+            //jumping
+            if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space))
+            {
+                Jump();
+            }
+            if (jumpCooldown > 0)
+            {
+                jumpCooldown -= Time.fixedDeltaTime;
+            }
+
+            //death when player falls out of map 
+            if (transform.position.y < -5)
+            {
+                Death();
+            }
+
+            //settings variables for animator
+            animator.SetBool("isGrounded", isGrounded());
+            animator.SetBool("isWalking", isWalking);
+        }
     }
 
     //function checking is player is grounded
