@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public Canvas GameOverCanvas;
     public Canvas LevelCompletedCanvas;
 
+    public GameObject controlsText;
+    private bool controlsShown = false;
+
 
     private void Awake()
     {
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
                 PauseMenu();
             }
         }
+        controlsText.SetActive(controlsShown);
     }
 
     private void SetGameState(GameState gameState)
@@ -78,5 +82,10 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.GS_GAME_OVER);
         DisableAllCanvases();
         GameOverCanvas.enabled = true;
+    }
+
+    public void Controls()
+    {
+        controlsShown = !controlsShown;
     }
 }
