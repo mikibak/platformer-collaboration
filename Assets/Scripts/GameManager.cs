@@ -10,9 +10,18 @@ public class GameManager : MonoBehaviour
 
     public GameState currentGameState = GameState.GS_PAUSEMENU;
 
+    public Canvas InGameCanvas;
+    public Canvas PauseMenuCanvas;
+    public Canvas GameOverCanvas;
+    public Canvas LevelCompletedCanvas;
+
+
     private void Awake()
     {
         instance = this;
+        DisableAllCanvases();
+        PauseMenuCanvas.enabled = true;
+        
     }
 
     private void Update()
@@ -35,23 +44,39 @@ public class GameManager : MonoBehaviour
         currentGameState = gameState;
     }
 
+    private void DisableAllCanvases()
+    {
+        InGameCanvas.enabled = false;
+        PauseMenuCanvas.enabled = false;
+        GameOverCanvas.enabled = false;
+        LevelCompletedCanvas.enabled = false;
+    }
+
     public void PauseMenu()
     {
         SetGameState(GameState.GS_PAUSEMENU);
+        DisableAllCanvases();
+        PauseMenuCanvas.enabled = true;
     }
 
     public void InGame()
     {
         SetGameState(GameState.GS_GAME);
+        DisableAllCanvases();
+        InGameCanvas.enabled = true;
     }
 
     public void LevelCompleted()
     {
         SetGameState(GameState.GS_LEVELCOMPLETED);
+        DisableAllCanvases();
+        LevelCompletedCanvas.enabled = true;
     }
 
     public void GameOver()
     {
         SetGameState(GameState.GS_GAME_OVER);
+        DisableAllCanvases();
+        GameOverCanvas.enabled = true;
     }
 }
