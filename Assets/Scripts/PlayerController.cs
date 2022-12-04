@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
 
     //score and death
-    public GameObject deathText;
     private int score = 0;
     private const int maxKeys = 3;
     public ScoreManager scoreManager;
@@ -74,7 +73,7 @@ public class PlayerController : MonoBehaviour
             }
 
             //death when player falls out of map 
-            if (transform.position.y < -5)
+            if (transform.position.y < -15)
             {
                 Death();
             }
@@ -114,16 +113,8 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
         this.gameObject.SetActive(false);
-        deathText.SetActive(true);
-        Debug.Log("zgon");
-        //after 5 seconds restarting the level
-        Invoke("Restart", 2);
-    }
 
-    private void Restart()
-    {
-        SceneManager.LoadScene("188555_188968_188593");
-        deathText.SetActive(false);
+        GameManager.instance.GameOver();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

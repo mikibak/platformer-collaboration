@@ -18,7 +18,8 @@ public class DoorsController : MonoBehaviour
         {
             doorsAnimator.SetBool("Entering", true);
             other.gameObject.SetActive(false);
-            levelCompletedText.SetActive(true);
+            Invoke("LevelCompleted", 1);
+            
         }
         else if(!isUnlocked)
         {
@@ -43,5 +44,10 @@ public class DoorsController : MonoBehaviour
     public void HideTextLocked()
     {
         DoorsLockedText.SetActive(false);
+    }
+
+    public void LevelCompleted()
+    {
+        GameManager.instance.LevelCompleted();
     }
 }

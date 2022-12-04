@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER }
 
@@ -87,5 +88,10 @@ public class GameManager : MonoBehaviour
     public void Controls()
     {
         controlsShown = !controlsShown;
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene("188555_188968_188593");
     }
 }
