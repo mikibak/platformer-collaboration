@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         DisableAllCanvases();
-        PauseMenuCanvas.enabled = true;
-        
+        //PauseMenuCanvas.enabled = true;
+        InGame();
     }
 
     private void Update()
@@ -85,6 +85,11 @@ public class GameManager : MonoBehaviour
         GameOverCanvas.enabled = true;
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void Controls()
     {
         controlsShown = !controlsShown;
@@ -92,6 +97,6 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        SceneManager.LoadScene("188555_188968_188593");
+        SceneManager.LoadScene("Level1");
     }
 }
