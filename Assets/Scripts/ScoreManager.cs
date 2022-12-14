@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public Text scoreText;
     public Text keysText;
-    int score = 0;
+    public int score = 0;
     int keys = 0;
     int maxKeys;
     public DoorsController doorsController;

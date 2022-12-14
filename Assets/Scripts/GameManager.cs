@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER }
 
@@ -18,10 +19,21 @@ public class GameManager : MonoBehaviour
 
     public GameObject controlsText;
     private bool controlsShown = false;
+    public static string keyHighScore = "HighscoreLevel1";
+    private int score;
+    public ScoreManager player;
+    public PlayerController playerHealth;
+
+    public Text scoreText;
+    public Text highScoreText;
+    public int highScore;
 
 
     private void Awake()
     {
+        if(PlayerPrefs.HasKey(keyHighScore)==false) {
+            PlayerPrefs.SetInt(keyHighScore, 0);
+        }
         instance = this;
         DisableAllCanvases();
         //PauseMenuCanvas.enabled = true;
@@ -40,12 +52,17 @@ public class GameManager : MonoBehaviour
             {
                 PauseMenu();
             }
+            else if(currentGameState == GameState.GS_LEVELCOMPLETED)
+            {
+                LevelCompleted();
+            }
         }
         controlsText.SetActive(controlsShown);
     }
 
     private void SetGameState(GameState gameState)
     {
+        //LevelCompletedCanvas.enabled = (currentGameState == GameState.GS_LEVELCOMPLETED)
         currentGameState = gameState;
     }
 
@@ -73,6 +90,20 @@ public class GameManager : MonoBehaviour
 
     public void LevelCompleted()
     {
+        score = player.score + playerHealth.health;
+        Scene currentScene;
+        currentScene = SceneManager.GetActiveScene();
+        if(currentScene.name == "Level1") {
+            highScore = PlayerPrefs.GetInt(keyHighScore);
+            if(highScore < score) {
+                Debug.Log("Setting Highscore");
+                PlayerPrefs.SetInt(keyHighScore, score);
+                highScore = score;
+            }
+        }
+        scoreText.text = "SCORE: " + score.ToString();
+        highScoreText.text = "HIGH SCORE: " + highScore.ToString();
+
         SetGameState(GameState.GS_LEVELCOMPLETED);
         DisableAllCanvases();
         LevelCompletedCanvas.enabled = true;
