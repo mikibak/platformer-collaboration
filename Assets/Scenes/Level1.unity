@@ -1240,6 +1240,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5865b5fb0bbe68f42b63dc16d3155e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &707406623 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6868472231690211266, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+  m_PrefabInstance: {fileID: 1743282964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65339c2364c6f4a519ff748f17ea4968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &707406625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5590058249209089474, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
@@ -5379,6 +5390,10 @@ PrefabInstance:
       propertyPath: controlsText
       value: 
       objectReference: {fileID: 368357061}
+    - target: {fileID: 8715341450556918076, guid: 5141bd510b5398e4e9e3de8915c7bea2, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 707406623}
     - target: {fileID: 8715341450556918076, guid: 5141bd510b5398e4e9e3de8915c7bea2, type: 3}
       propertyPath: highScoreText
       value: 
