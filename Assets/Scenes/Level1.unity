@@ -692,6 +692,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: cc1d96652bd3e2848ac06c8adc92ea14, type: 3}
+--- !u!1 &356375114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6868472231772240947, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
+  m_PrefabInstance: {fileID: 1743282964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &364930090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6136670767094011888, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
@@ -1245,21 +1250,10 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6868472231690211266, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
   m_PrefabInstance: {fileID: 1743282964}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 356375114}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65339c2364c6f4a519ff748f17ea4968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &707406625 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5590058249209089474, guid: cf23f01cd5304405eb01448faeda6116, type: 3}
-  m_PrefabInstance: {fileID: 1743282964}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9aecf057515584489ecf29f93855547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &772064640 stripped
@@ -4661,6 +4655,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 114040229}
+    - target: {fileID: 476432854447859655, guid: e5fb577a8f6f6d440a27130ae7533dd2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 476432854913200732, guid: e5fb577a8f6f6d440a27130ae7533dd2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5377,7 +5375,7 @@ PrefabInstance:
     - target: {fileID: 8715341450556918076, guid: 5141bd510b5398e4e9e3de8915c7bea2, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 707406625}
+      objectReference: {fileID: 356375114}
     - target: {fileID: 8715341450556918076, guid: 5141bd510b5398e4e9e3de8915c7bea2, type: 3}
       propertyPath: scoreText
       value: 

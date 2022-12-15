@@ -19,15 +19,23 @@ public class GameManager : MonoBehaviour
 
     public GameObject controlsText;
     private bool controlsShown = false;
-    public static string keyHighScore = "HighscoreLevel1";
-    private int score;
-    public ScoreManager player;
-    public PlayerController playerHealth;
+    
+    public GameObject player;
+    private ScoreManager playerScoreManager;
+    private PlayerController playerController;
 
+    private int score;
+    public int highScore;
+    public static string keyHighScore = "HighscoreLevel1"; //key for player prefs saving
     public Text scoreText;
     public Text highScoreText;
-    public int highScore;
 
+
+    private void Start()
+    {
+        playerScoreManager = player.GetComponent<ScoreManager>();
+        playerController = player.GetComponent<PlayerController>();
+    }
 
     private void Awake()
     {
@@ -57,7 +65,6 @@ public class GameManager : MonoBehaviour
                 LevelCompleted();
             }
         }
-        controlsText.SetActive(controlsShown);
     }
 
     private void SetGameState(GameState gameState)
@@ -90,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelCompleted()
     {
-        score = player.score + playerHealth.health;
+        score = playerScoreManager.score + playerController.health;
         Scene currentScene;
         currentScene = SceneManager.GetActiveScene();
         if(currentScene.name == "Level1") {
@@ -124,6 +131,7 @@ public class GameManager : MonoBehaviour
     public void Controls()
     {
         controlsShown = !controlsShown;
+        controlsText.SetActive(controlsShown);
     }
 
     public void ResetGame()

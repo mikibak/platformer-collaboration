@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public GameObject controlsText;
+    private bool controlsShown = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +35,11 @@ public class MainMenuManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
         Application.Quit();
+    }
+
+    public void ToggleShowControls ()
+    {
+        controlsShown = !controlsShown;
+        controlsText.SetActive(controlsShown);
     }
 }
