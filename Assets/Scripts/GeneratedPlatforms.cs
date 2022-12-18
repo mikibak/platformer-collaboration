@@ -5,27 +5,27 @@ using UnityEngine;
 public class GeneratedPlatforms : MonoBehaviour
 {
     public GameObject platformPrefab;
-    private static int PLATFORMS_NUM = 6;
+    private static int PLATFORMS_NUM = 9;
     private GameObject[] platforms;
     private Vector3[] positions;
-    private Vector3 offset;
-    private float maxX;
+    private Vector3[] offset;
     private float maxY;
     private float minY;
     public float speed = 1;
+    public float width = 1;
 
     void Awake()
     {
-        offset.y = 3;
         platforms = new GameObject[ PLATFORMS_NUM ];
         positions = new Vector3[ PLATFORMS_NUM ];
+        offset = new Vector3[ PLATFORMS_NUM ];
         for(int i=0; i<PLATFORMS_NUM; i++) {
-            positions[i].x = transform.position.x + i;
-            positions[i].y = transform.position.y + Mathf.Sin(i);
+            positions[i].x = transform.position.x + i*width;
+            positions[i].y = transform.position.y + Mathf.Sin(i*Mathf.PI * 45.0f/180.0f);
             positions[i].z = 0;
+            offset[i] = new Vector3(0, 1, 0);
             platforms[ i ] = Instantiate( platformPrefab, positions[ i ], Quaternion.identity );
         }
-        maxX = transform.position.x + PLATFORMS_NUM;
         maxY = transform.position.y + 1;
         minY = transform.position.y - 1;
     }
@@ -35,9 +35,12 @@ public class GeneratedPlatforms : MonoBehaviour
     {
         for(int i=0; i<PLATFORMS_NUM; i++) {
             if(platforms[ i ].transform.position.y >= maxY || platforms[ i ].transform.position.y <= minY) {
-                offset = -offset;
+                offset[i] = -offset[i];
             }
-            Vector3.MoveTowards( platforms[ i ].transform.position, platforms[ i ].transform.position + offset, speed * Time.deltaTime );
+            //platforms[ i ].transform.position = Vector3.MoveTowards( platforms[ i ].transform.position, 
+            //new Vector3(platforms[ i ].transform.position.x,  transform.position.y + Mathf.Sin(offset[i].y*Mathf.PI * 45.0f/180.0f), 0), speed * Time.deltaTime );
+            float calculatedPosition = transform.position.y + Mathf.Sin( speed * (Time.time*Mathf.PI+i));
+            platforms[ i ].transform.position = new Vector3(platforms[ i ].transform.position.x, calculatedPosition, transform.position.z);
         }
     }
 }
