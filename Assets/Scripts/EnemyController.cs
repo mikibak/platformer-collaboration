@@ -18,15 +18,17 @@ public class EnemyController : MonoBehaviour
     public float timer;
     public float timerAttacks = 0;
 
-    public HealthController PlayerHealthController;
+    public PlayerController playerController;
     public HealthBar healthBar;
     public HealthBar cooldownBar;
+
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = durationOfCycle;
-        PlayerHealthController = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthController>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         healthBar.SetMaxHealth(health);
         healthBar.SetHealth(health);
         cooldownBar.SetMaxHealth(timeBetweenAttacks);
@@ -62,7 +64,7 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Player") && timerAttacks <= 0)
         {
             Debug.Log("attacking player");
-            PlayerHealthController.TakeDamage(1);
+            playerController.TakeDamage(1);
             timerAttacks = timeBetweenAttacks;
         }
         else if(timerAttacks > 0 && other.CompareTag("Player"))
@@ -78,8 +80,19 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Enemy health: " + health.ToString());
         if (health <= 0)
         {
-            Debug.Log("Enemy dead");
-            this.gameObject.SetActive(false);
+            Invoke("DestroyEnemy", 0.5f);
+            Death();
         }
+    }
+
+    private void Death()
+    {
+        Debug.Log("Enemy dead");
+        animator.SetBool("isDead", true);
+    }
+
+    private void DestroyEnemy()
+    {
+        this.gameObject.SetActive(false);
     }
 }
