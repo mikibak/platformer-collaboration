@@ -30,11 +30,16 @@ public class PlayerController : MonoBehaviour
     public int health;
     public HealthBar healthBar;
 
+    //sound
+    public AudioSource audioSource;
+    public AudioClip coinSound;
+
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -125,6 +130,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Score: " + score);
             scoreManager.AddPoints(1);
             other.gameObject.SetActive(false);
+            audioSource.PlayOneShot( coinSound, AudioListener.volume );
         }
 
         if (other.CompareTag("Key"))

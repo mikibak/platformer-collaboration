@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER }
+public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER, GS_OPTIONS }
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Canvas PauseMenuCanvas;
     public Canvas GameOverCanvas;
     public Canvas LevelCompletedCanvas;
+    public Canvas OptionsCanvas;
 
     public GameObject controlsText;
     private bool controlsShown = false;
@@ -23,12 +24,15 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private ScoreManager playerScoreManager;
     private PlayerController playerController;
+    public Text qualityText;
+    public Slider volumeSlider;
 
     private int score;
     public int highScore;
     public static string keyHighScore = "HighscoreLevel1"; //key for player prefs saving
     public Text scoreText;
     public Text highScoreText;
+    private string qualityName;
 
 
     private void Start()
@@ -45,7 +49,9 @@ public class GameManager : MonoBehaviour
         instance = this;
         DisableAllCanvases();
         //PauseMenuCanvas.enabled = true;
+        ChangeQualityName();
         InGame();
+        //volumeSlider.onValueChanged = SetVolume(volumeSlider.value);
     }
 
     private void Update()
@@ -79,6 +85,7 @@ public class GameManager : MonoBehaviour
         PauseMenuCanvas.enabled = false;
         GameOverCanvas.enabled = false;
         LevelCompletedCanvas.enabled = false;
+        OptionsCanvas.enabled = false;
     }
 
     public void PauseMenu()
@@ -93,6 +100,7 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.GS_GAME);
         DisableAllCanvases();
         InGameCanvas.enabled = true;
+        Time.timeScale = 1;
     }
 
     public void LevelCompleted()
@@ -134,8 +142,39 @@ public class GameManager : MonoBehaviour
         controlsText.SetActive(controlsShown);
     }
 
+    public void Options()
+    {
+        SetGameState(GameState.GS_OPTIONS);
+        DisableAllCanvases();
+        OptionsCanvas.enabled = true;
+        Time.timeScale = 0;
+    }
+
     public void ResetGame()
     {
         SceneManager.LoadScene("Level1");
+    }
+
+    public void SetHigherGraphics()
+    {
+        QualitySettings.IncreaseLevel();
+        ChangeQualityName();
+    }
+
+    public void SetLowerGraphics()
+    {
+        QualitySettings.DecreaseLevel();
+        ChangeQualityName();
+    }
+
+    public void ChangeQualityName()
+    {
+        qualityName = QualitySettings.names[QualitySettings.GetQualityLevel()];
+        qualityText.text = "QUALITY: " + qualityName;
+    }
+
+    public void SetVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
     }
 }
