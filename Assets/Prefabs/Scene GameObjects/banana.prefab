@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4412721097212738203}
   - component: {fileID: 4412721097212738202}
-  - component: {fileID: 3362871887449415116}
+  - component: {fileID: 5143384660621071534}
   m_Layer: 0
   m_Name: banana
   m_TagString: Trash
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3362871887449415116
+--- !u!60 &5143384660621071534
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,10 +110,27 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.04, y: 0.044999998}
-      - {x: -0.08, y: 0.015}
-      - {x: -0.08, y: -0.074999996}
-      - {x: 0.08, y: -0.074999996}
-      - {x: 0.08, y: -0.005}
-      - {x: 0.02, y: 0.044999998}
+    - - {x: 1, y: -6.52}
+      - {x: 5, y: -6.52}
+      - {x: 6.02, y: -5.5499997}
+      - {x: 6.02, y: -4.16}
+      - {x: -0.88, y: -1.1999999}
+      - {x: -1.9799999, y: 1.5}
+      - {x: -2, y: 1.52}
+      - {x: -3.37, y: 1.52}
+      - {x: -5.35, y: -1.42}
+      - {x: -8, y: -4.47}
+      - {x: -8, y: -7.5}
+      - {x: -6.97, y: -7.5}
+      - {x: -4.98, y: -6.5499997}
+      - {x: -3.03, y: -7.5}
+      - {x: -0.96999997, y: -7.5}
+    - - {x: 5, y: -2.48}
+      - {x: 4.98, y: -2.5}
+      - {x: 4.98, y: -3.5}
+      - {x: 5, y: -3.52}
+      - {x: 6, y: -3.52}
+      - {x: 6.02, y: -3.5}
+      - {x: 6.02, y: -2.5}
+      - {x: 6, y: -2.48}
   m_UseDelaunayMesh: 0

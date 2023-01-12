@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4653831799294361327}
   - component: {fileID: 175355991614103357}
   - component: {fileID: 9014436964531176310}
+  - component: {fileID: 990702511966217039}
   m_Layer: 0
   m_Name: PF Village Props - Tree 01
   m_TagString: Untagged
@@ -141,20 +142,20 @@ PolygonCollider2D:
       - {x: 2.1215363, y: 3.9375}
       - {x: 1.8715363, y: 4.125}
       - {x: 1.5902863, y: 4.40625}
-      - {x: 1.1840363, y: 4.5625}
-      - {x: 1.0108827, y: 4.849426}
-      - {x: 0.85207516, y: 4.879117}
-      - {x: 0.79690135, y: 5.0330415}
-      - {x: 0.60620433, y: 5.034951}
-      - {x: 0.3467527, y: 5.0311546}
-      - {x: -0.008578479, y: 5.0379233}
-      - {x: -0.061266184, y: 5.0455284}
-      - {x: -0.19096375, y: 5.0455966}
-      - {x: -0.24168992, y: 5.042176}
-      - {x: -0.5102657, y: 5.037938}
-      - {x: -0.81596375, y: 5.03125}
-      - {x: -1.061609, y: 5.0298142}
-      - {x: -1.2534637, y: 4.90625}
+      - {x: 1.0531385, y: 4.4644737}
+      - {x: 0.9818752, y: 4.4573708}
+      - {x: 0.76809317, y: 4.497453}
+      - {x: 0.5501645, y: 4.499556}
+      - {x: 0.38614175, y: 4.501466}
+      - {x: 0.12002152, y: 4.504338}
+      - {x: -0.08193268, y: 4.557787}
+      - {x: -0.22798026, y: 4.5387177}
+      - {x: -0.33100358, y: 4.56546}
+      - {x: -0.42174116, y: 4.582045}
+      - {x: -0.6369684, y: 4.577807}
+      - {x: -1.0160207, y: 4.617799}
+      - {x: -1.2616658, y: 4.616363}
+      - {x: -1.4001722, y: 4.592828}
       - {x: -1.8159637, y: 4.375}
       - {x: -1.9409637, y: 4.125}
       - {x: -1.9097137, y: 3.75}
@@ -196,3 +197,29 @@ PolygonCollider2D:
     - - {x: 0.37153625, y: 4.21875}
       - {x: 0.30903625, y: 4.15625}
   m_UseDelaunayMesh: 0
+--- !u!61 &990702511966217039
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653831799294361312}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.022851944, y: 4.3626842}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.52360046, y: 0}
+    oldSize: {x: 4.78125, y: 5.03125}
+    newSize: {x: 4.78125, y: 5.03125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.8484912, y: 0.5023594}
+  m_EdgeRadius: 0

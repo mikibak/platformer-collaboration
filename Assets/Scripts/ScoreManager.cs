@@ -61,6 +61,7 @@ public class ScoreManager : MonoBehaviour
         keysText.text = "KEYS: " + keys.ToString() + "/" + maxKeys.ToString();
         if(keys==maxKeys)
         {
+            Debug.Log("Klucze");
             doorsController.SetUnlocked();
         }
     }
