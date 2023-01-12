@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     private GameObject contactedSoil;
     public GameObject PlantButton;
     public GameObject TreePrefab;
+    private int trash = 0;
+    private int seeds = 0;
 
     private void Awake()
     {
@@ -105,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded() && jumpCooldown <= 0 && rigidBody.velocity.y == 0)
+        if (/*isGrounded() &&*/ jumpCooldown <= 0 && rigidBody.velocity.y == 0)
         {
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCooldown = maxJumpCooldown;
@@ -138,6 +140,14 @@ public class PlayerController : MonoBehaviour
             scoreManager.AddPoints(1);
             other.gameObject.SetActive(false);
             audioSource.PlayOneShot( coinSound, AudioListener.volume );
+        }
+
+        if (other.CompareTag("Trash"))
+        {
+            trash += 1;
+            Debug.Log("Trash: " + trash);
+            scoreManager.AddTrash(1);
+            other.gameObject.SetActive(false);
         }
 
         if (other.CompareTag("Key"))
