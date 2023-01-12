@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip coinSound;
 
+    //trees
+    private bool canPlant;
+    private GameObject contactedSoil;
+    public GameObject PlantButton;
+    public GameObject TreePrefab;
 
     private void Awake()
     {
@@ -47,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
         health = maxHealth;
         healthBar.SetMaxHealth(health);
+
+        canPlant = false;
     }
 
 
@@ -143,12 +150,24 @@ public class PlayerController : MonoBehaviour
         {
             transform.SetParent( other.transform );
         }
+        if (other.CompareTag("Soil"))
+        {
+            Debug.Log("DUPA");
+            canPlant = true;
+            PlantButton.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D( Collider2D other ) {
         if (other.CompareTag("MovingPlatform"))
         {
             transform.SetParent( null );
+        }
+        if (other.CompareTag("Soil"))
+        {
+            //other.gameObject.tag="OccupiedSoil";
+            //canPlant = false;
+            PlantButton.SetActive(false);
         }
     }
 
@@ -167,5 +186,12 @@ public class PlayerController : MonoBehaviour
     {
         if (health != maxHealth) health += healthAdded;
         healthBar.SetHealth(health);
+    }
+
+    public void PlantTree()
+    {
+        if(canPlant) {
+            Instantiate(TreePrefab, this.transform.position, this.transform.rotation); 
+        }
     }
 }
