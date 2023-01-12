@@ -129,6 +129,8 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.GS_GAME_OVER);
         DisableAllCanvases();
         GameOverCanvas.enabled = true;
+        AudioSource audio = GameOverCanvas.GetComponent<AudioSource>();
+        audio.Play();
     }
 
     public void MainMenu()

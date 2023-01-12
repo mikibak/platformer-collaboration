@@ -6072,6 +6072,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ResetGame
       objectReference: {fileID: 0}
+    - target: {fileID: 6324110888127626789, guid: 9b259d4867ea23c468c990183b582ff7, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b259d4867ea23c468c990183b582ff7, type: 3}
