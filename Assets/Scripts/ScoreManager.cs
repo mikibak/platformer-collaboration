@@ -49,6 +49,12 @@ public class ScoreManager : MonoBehaviour
         seedText.text = "SEEDS: " + seeds.ToString();
     }
 
+    public void SubstractSeeds(int points)
+    {
+        seeds -= points;
+        seedText.text = "SEEDS: " + seeds.ToString();
+    }
+
     public void AddKey()
     {
         keys++;

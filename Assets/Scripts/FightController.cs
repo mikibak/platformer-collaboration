@@ -32,7 +32,7 @@ public class FightController : MonoBehaviour
     void FixedUpdate()
     {
         timer -= Time.deltaTime;
-        if((Input.GetKey(KeyCode.P) || Input.GetMouseButtonDown(0)) && timer <=0)
+        if(Input.GetKey(KeyCode.Q) && timer <=0)
         {
             Debug.Log("attacking closest enemy");
             GameObject target = GetClosestEnemy();
@@ -53,10 +53,12 @@ public class FightController : MonoBehaviour
             enemyController.TakeDamage();
             timer = attackCooldown;
         }
-        else if (Input.GetKey(KeyCode.P) && timer > 0)
+        else if (Input.GetKey(KeyCode.Q) && timer > 0)
         {
             Debug.Log("player attack on cooldown");
         }
+
+
 
         staminaSlider.value = attackCooldown - timer;
     }

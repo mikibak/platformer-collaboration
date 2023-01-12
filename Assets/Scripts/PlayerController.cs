@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     //score and death
     private int score = 0;
-    private const int maxKeys = 3;
+    private const int maxKeys = 5;
     public ScoreManager scoreManager;
 
     //health
@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public GameObject TreePrefab;
     private int trash = 0;
     private int seeds = 0;
+    
 
     private void Awake()
     {
@@ -95,6 +96,11 @@ public class PlayerController : MonoBehaviour
             //settings variables for animator
             animator.SetBool("isGrounded", isGrounded());
             animator.SetBool("isWalking", isWalking);
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                PlantTree();
+            }
         }
     }
 
@@ -200,11 +206,13 @@ public class PlayerController : MonoBehaviour
 
     public void PlantTree()
     {
-        if(canPlant) {
+        if(canPlant && scoreManager.seeds>0) {
             Vector3 tree_position = this.transform.position;
             tree_position.x -= 0.3f;
             tree_position.y -= 0.2f;
-            Instantiate(TreePrefab, tree_position, this.transform.rotation); 
+            Instantiate(TreePrefab, tree_position, this.transform.rotation);
+            scoreManager.SubstractSeeds(1);
+
         }
     }
 }
