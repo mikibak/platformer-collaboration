@@ -191,7 +191,10 @@ public class PlayerController : MonoBehaviour
     public void PlantTree()
     {
         if(canPlant) {
-            Instantiate(TreePrefab, this.transform.position, this.transform.rotation); 
+            Vector3 tree_position = this.transform.position;
+            tree_position.x -= 0.3f;
+            tree_position.y -= 0.2f;
+            Instantiate(TreePrefab, tree_position, this.transform.rotation); 
         }
     }
 }
