@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
             if ((moveDir < 0 && isFacingRight) || (moveDir > 0 && !isFacingRight)) Flip();
 
             //jumping
-            if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 Jump();
             }

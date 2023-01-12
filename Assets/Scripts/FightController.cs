@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FightController : MonoBehaviour
 {
@@ -11,10 +12,11 @@ public class FightController : MonoBehaviour
     public EnemyController enemyController;
     float closestDist;
     float attackCooldown = 2;
-    float timer = 0;
+    public float timer = 0;
     public ParticleSystem gunTrail;
     private ParticleSystem.VelocityOverLifetimeModule velocityModule;
     public GameObject gun;
+    public Slider staminaSlider;
 
     
     // Start is called before the first frame update
@@ -22,13 +24,15 @@ public class FightController : MonoBehaviour
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         velocityModule = gunTrail.velocityOverLifetime;
+        staminaSlider.maxValue = attackCooldown;
+        staminaSlider.value = attackCooldown;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         timer -= Time.deltaTime;
-        if(Input.GetKey(KeyCode.P) && timer <=0)
+        if((Input.GetKey(KeyCode.P) || Input.GetMouseButtonDown(0)) && timer <=0)
         {
             Debug.Log("attacking closest enemy");
             GameObject target = GetClosestEnemy();
@@ -53,6 +57,8 @@ public class FightController : MonoBehaviour
         {
             Debug.Log("player attack on cooldown");
         }
+
+        staminaSlider.value = attackCooldown - timer;
     }
 
     public GameObject GetClosestEnemy()
