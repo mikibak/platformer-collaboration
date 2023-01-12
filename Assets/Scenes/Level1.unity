@@ -5197,6 +5197,10 @@ PrefabInstance:
       value: PLANT TREE
       objectReference: {fileID: 0}
     - target: {fileID: 2314314202749363087, guid: f4d4d27938f3cc949a873c93fbe1e870, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314314202749363087, guid: f4d4d27938f3cc949a873c93fbe1e870, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 707406623}
