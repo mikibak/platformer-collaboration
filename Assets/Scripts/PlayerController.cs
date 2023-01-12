@@ -41,7 +41,9 @@ public class PlayerController : MonoBehaviour
     public GameObject TreePrefab;
     private int trash = 0;
     private int seeds = 0;
-    
+    public GameObject plantText;
+    public GameObject attackText;
+
 
     private void Awake()
     {
@@ -168,9 +170,13 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag("Soil"))
         {
-            Debug.Log("DUPA");
             canPlant = true;
-            PlantButton.SetActive(true);
+            //PlantButton.SetActive(true);
+            plantText.SetActive(true);
+        }
+        if (other.CompareTag("attack"))
+        {
+            attackText.SetActive(true);
         }
     }
 
@@ -183,6 +189,11 @@ public class PlayerController : MonoBehaviour
         {
             //other.gameObject.tag="OccupiedSoil";
             //canPlant = false;
+            PlantButton.SetActive(false);
+        }
+        if (other.CompareTag("Soil"))
+        {
+            canPlant = false ;
             PlantButton.SetActive(false);
         }
     }
@@ -212,7 +223,7 @@ public class PlayerController : MonoBehaviour
             tree_position.y -= 0.2f;
             Instantiate(TreePrefab, tree_position, this.transform.rotation);
             scoreManager.SubstractSeeds(1);
-
         }
+
     }
 }
