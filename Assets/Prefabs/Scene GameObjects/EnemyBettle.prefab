@@ -208,13 +208,15 @@ MonoBehaviour:
   durationOfCycle: 5
   healthStart: 3
   health: 3
-  timeBetweenAttacks: 10
+  timeBetweenAttacks: 5
   timer: 0
   timerAttacks: 0
   playerController: {fileID: 0}
   healthBar: {fileID: 5003719591494281302}
   cooldownBar: {fileID: 3108327312598784746}
   animator: {fileID: 6136670767094011887}
+  bulletPrefab: {fileID: 484702610781695263, guid: 0515093a503942c4db3d3b5120418dac, type: 3}
+  bulletSpeed: 2
 --- !u!95 &6136670767094011887
 Animator:
   serializedVersion: 4
