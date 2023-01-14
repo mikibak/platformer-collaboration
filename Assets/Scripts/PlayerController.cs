@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     //score and death
     private int score = 0;
-    private const int maxKeys = 3;
+    private const int maxKeys = 5;
     public ScoreManager scoreManager;
 
     //health
@@ -33,6 +33,23 @@ public class PlayerController : MonoBehaviour
     //sound
     public AudioSource audioSource;
     public AudioClip coinSound;
+
+    //trees
+    private bool canPlant;
+    private GameObject contactedSoil;
+    public GameObject PlantButton;
+    public GameObject TreePrefab;
+    private int trash = 0;
+    private int seeds = 0;
+    public GameObject plantText;
+    public GameObject attackText;
+
+    //Friend
+    public GameObject Friend;
+
+    //respawning
+    [SerializeField] private Transform lastCheckpoint;
+    [SerializeField] private bool respawning;
 
 
     private void Awake()
@@ -47,12 +64,14 @@ public class PlayerController : MonoBehaviour
 
         health = maxHealth;
         healthBar.SetMaxHealth(health);
+
+        canPlant = false;
     }
 
 
     void FixedUpdate()
     {
-        if (GameManager.instance.currentGameState == GameState.GS_GAME)
+        if (GameManager.instance.currentGameState == GameState.GS_GAME && !respawning)
         {
             isWalking = false;
             //1 gdy w prawo, -1 gdy w lewo, 0 gdy brak inputu
@@ -68,7 +87,7 @@ public class PlayerController : MonoBehaviour
             if ((moveDir < 0 && isFacingRight) || (moveDir > 0 && !isFacingRight)) Flip();
 
             //jumping
-            if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 Jump();
             }
@@ -77,17 +96,35 @@ public class PlayerController : MonoBehaviour
                 jumpCooldown -= Time.fixedDeltaTime;
             }
 
-            //death when player falls out of map 
-            if (transform.position.y < -15)
+            //respawn or death when player falls out of map 
+            if (transform.position.y < -5 && !respawning)
             {
-                Death();
+                if (health >= 1)
+                {
+                    Respawn();
+                } else 
+                {
+                    Death();
+                }
             }
 
             //settings variables for animator
             animator.SetBool("isGrounded", isGrounded());
             animator.SetBool("isWalking", isWalking);
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                PlantTree();
+            }
         }
     }
+
+    void Update() {
+        if(respawning) {
+            this.transform.position = Friend.transform.position;
+        }
+    }
+
 
     //function checking is player is grounded
     private bool isGrounded()
@@ -98,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded() && jumpCooldown <= 0 && rigidBody.velocity.y == 0)
+        if (/*isGrounded() &&*/ jumpCooldown <= 0 && rigidBody.velocity.y == 0)
         {
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCooldown = maxJumpCooldown;
@@ -133,6 +170,14 @@ public class PlayerController : MonoBehaviour
             audioSource.PlayOneShot( coinSound, AudioListener.volume );
         }
 
+        if (other.CompareTag("Trash"))
+        {
+            trash += 1;
+            Debug.Log("Trash: " + trash);
+            scoreManager.AddTrash(1);
+            other.gameObject.SetActive(false);
+        }
+
         if (other.CompareTag("Key"))
         {
             scoreManager.AddKey();
@@ -143,12 +188,44 @@ public class PlayerController : MonoBehaviour
         {
             transform.SetParent( other.transform );
         }
+        if (other.CompareTag("Soil"))
+        {
+            canPlant = true;
+            //PlantButton.SetActive(true);
+            plantText.SetActive(true);
+        }
+        if (other.CompareTag("attack"))
+        {
+            attackText.SetActive(true);
+        }
+        if (other.CompareTag("Checkpoint"))
+        {
+            lastCheckpoint = other.transform;
+        }
+        if (other.CompareTag("Checkpoint") && respawning)
+        {
+            //stop respawning
+            Debug.Log("Respawn successful!");
+            respawning = false;
+            Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = this.transform;
+        }
     }
 
     private void OnTriggerExit2D( Collider2D other ) {
         if (other.CompareTag("MovingPlatform"))
         {
             transform.SetParent( null );
+        }
+        if (other.CompareTag("Soil"))
+        {
+            //other.gameObject.tag="OccupiedSoil";
+            //canPlant = false;
+            PlantButton.SetActive(false);
+        }
+        if (other.CompareTag("Soil"))
+        {
+            canPlant = false ;
+            PlantButton.SetActive(false);
         }
     }
 
@@ -167,5 +244,23 @@ public class PlayerController : MonoBehaviour
     {
         if (health != maxHealth) health += healthAdded;
         healthBar.SetHealth(health);
+    }
+
+    public void PlantTree()
+    {
+        if(canPlant && scoreManager.seeds>0) {
+            Vector3 tree_position = this.transform.position;
+            tree_position.x -= 0.3f;
+            tree_position.y -= 0.2f;
+            Instantiate(TreePrefab, tree_position, this.transform.rotation);
+            scoreManager.SubstractSeeds(1);
+        }
+
+    }
+
+    private void Respawn()
+    {
+        Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = lastCheckpoint.transform;;
+        respawning = true;
     }
 }

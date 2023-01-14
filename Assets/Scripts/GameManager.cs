@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     private string qualityName;
 
 
+
+
     private void Start()
     {
         playerScoreManager = player.GetComponent<ScoreManager>();
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
         ChangeQualityName();
         InGame();
         //volumeSlider.onValueChanged = SetVolume(volumeSlider.value);
+
     }
 
     private void Update()
@@ -129,6 +132,8 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.GS_GAME_OVER);
         DisableAllCanvases();
         GameOverCanvas.enabled = true;
+        AudioSource audio = GameOverCanvas.GetComponent<AudioSource>();
+        audio.Play();
     }
 
     public void MainMenu()
