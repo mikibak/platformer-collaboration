@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
     //respawning
     [SerializeField] private Transform lastCheckpoint;
     [SerializeField] private bool respawning;
+    public SpriteRenderer spriteRenderer;
+    public Sprite grownCheckpoint;
 
 
     private void Awake()
@@ -129,7 +131,7 @@ public class PlayerController : MonoBehaviour
     //function checking is player is grounded
     private bool isGrounded()
     {
-        //do zmiany moze
+        
         return Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
     }
 
@@ -201,6 +203,8 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Checkpoint"))
         {
             lastCheckpoint = other.transform;
+            spriteRenderer = other.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = grownCheckpoint;
         }
         if (other.CompareTag("Checkpoint") && respawning)
         {
@@ -208,6 +212,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Respawn successful!");
             respawning = false;
             Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = this.transform;
+            other.transform.Translate(0, -0.2f, 0);
+            //trzeba naprawic
         }
         if (other.CompareTag("Bullet"))
         {
@@ -223,8 +229,6 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag("Soil"))
         {
-            //other.gameObject.tag="OccupiedSoil";
-            //canPlant = false;
             PlantButton.SetActive(false);
         }
         if (other.CompareTag("Soil"))
@@ -266,7 +270,9 @@ public class PlayerController : MonoBehaviour
     private void Respawn()
     {
         TakeDamage(1);
-        Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = lastCheckpoint.transform;;
+        Transform newPos = lastCheckpoint.transform;
+        newPos.Translate(0, 0.2f, 0);
+        Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = newPos.transform;
         respawning = true;
     }
 }
