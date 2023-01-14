@@ -4225,6 +4225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 864951865}
+  - component: {fileID: 864951866}
   m_Layer: 0
   m_Name: FriendPivot
   m_TagString: Untagged
@@ -4247,6 +4248,21 @@ Transform:
   m_Father: {fileID: 707406624}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &864951866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864951864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9fc4142a98e764e98eb672de965f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  xScale: 0.1
+  yScale: 0.1
 --- !u!1001 &923973155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6573,8 +6589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 864951865}
-  distance: 5
-  height: 0.5
+  distance: 2
+  height: 0.3
   damping: 3
   smoothRotation: 1
   followBehind: 1
