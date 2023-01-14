@@ -24,6 +24,13 @@ public class EnemyController : MonoBehaviour
 
     public Animator animator;
 
+    //shooting
+    //private bool inRange;
+    public GameObject bulletPrefab;
+    [SerializeField] private float bulletSpeed = 1;
+    [SerializeField] private float maxRange = 5;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +40,7 @@ public class EnemyController : MonoBehaviour
         healthBar.SetHealth(health);
         cooldownBar.SetMaxHealth(timeBetweenAttacks);
         cooldownBar.SetHealth(timeBetweenAttacks);
+        //inRange = false;
     }
 
     // Update is called once per frame
@@ -50,6 +58,16 @@ public class EnemyController : MonoBehaviour
         else if (direction == 1)
         {
             transform.Translate(0.0f, moveDir * speed * Time.fixedDeltaTime, 0.0f, Space.World);
+        }
+
+        if(Vector3.Distance(transform.position, playerController.gameObject.transform.position) < maxRange) {
+            //inRange = true;
+            if (timerAttacks <= 0)
+            {
+            Debug.Log("shotting at player");
+            ShootBullet();
+            timerAttacks = timeBetweenAttacks;
+            }
         }
     }
 
@@ -94,5 +112,15 @@ public class EnemyController : MonoBehaviour
     private void DestroyEnemy()
     {
         this.gameObject.SetActive(false);
+    }
+
+    private void ShootBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation, null); 
+        Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+        Vector2 direction = playerController.gameObject.transform.position - transform.position;
+        Vector2 newvector = direction.normalized * bulletSpeed;
+        bulletRigidbody.velocity = newvector;
+
     }
 }

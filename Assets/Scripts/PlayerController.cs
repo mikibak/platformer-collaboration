@@ -209,6 +209,11 @@ public class PlayerController : MonoBehaviour
             respawning = false;
             Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = this.transform;
         }
+        if (other.CompareTag("Bullet"))
+        {
+            TakeDamage(1);
+            Destroy(other.gameObject);
+        }
     }
 
     private void OnTriggerExit2D( Collider2D other ) {
@@ -260,6 +265,7 @@ public class PlayerController : MonoBehaviour
 
     private void Respawn()
     {
+        TakeDamage(1);
         Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = lastCheckpoint.transform;;
         respawning = true;
     }
