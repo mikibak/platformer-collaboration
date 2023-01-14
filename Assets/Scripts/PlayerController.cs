@@ -44,6 +44,13 @@ public class PlayerController : MonoBehaviour
     public GameObject plantText;
     public GameObject attackText;
 
+    //Friend
+    public GameObject Friend;
+
+    //respawning
+    [SerializeField] private Transform lastCheckpoint;
+    [SerializeField] private bool respawning;
+
 
     private void Awake()
     {
@@ -64,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameManager.instance.currentGameState == GameState.GS_GAME)
+        if (GameManager.instance.currentGameState == GameState.GS_GAME && !respawning)
         {
             isWalking = false;
             //1 gdy w prawo, -1 gdy w lewo, 0 gdy brak inputu
@@ -89,10 +96,16 @@ public class PlayerController : MonoBehaviour
                 jumpCooldown -= Time.fixedDeltaTime;
             }
 
-            //death when player falls out of map 
-            if (transform.position.y < -15)
+            //respawn or death when player falls out of map 
+            if (transform.position.y < -5 && !respawning)
             {
-                Death();
+                if (health >= 1)
+                {
+                    Respawn();
+                } else 
+                {
+                    Death();
+                }
             }
 
             //settings variables for animator
@@ -105,6 +118,13 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    void Update() {
+        if(respawning) {
+            this.transform.position = Friend.transform.position;
+        }
+    }
+
 
     //function checking is player is grounded
     private bool isGrounded()
@@ -178,6 +198,17 @@ public class PlayerController : MonoBehaviour
         {
             attackText.SetActive(true);
         }
+        if (other.CompareTag("Checkpoint"))
+        {
+            lastCheckpoint = other.transform;
+        }
+        if (other.CompareTag("Checkpoint") && respawning)
+        {
+            //stop respawning
+            Debug.Log("Respawn successful!");
+            respawning = false;
+            Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = this.transform;
+        }
     }
 
     private void OnTriggerExit2D( Collider2D other ) {
@@ -225,5 +256,11 @@ public class PlayerController : MonoBehaviour
             scoreManager.SubstractSeeds(1);
         }
 
+    }
+
+    private void Respawn()
+    {
+        Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = lastCheckpoint.transform;;
+        respawning = true;
     }
 }
