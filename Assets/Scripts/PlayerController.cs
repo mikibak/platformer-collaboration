@@ -57,12 +57,15 @@ public class PlayerController : MonoBehaviour
 
     //CAVE
     bool isInCave = false;
+    public GameObject GlobalLight;
+    public GameObject CaveLight;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        CaveLight.SetActive(false);
     }
     void Start()
     {
@@ -118,10 +121,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isGrounded", isGrounded());
             animator.SetBool("isWalking", isWalking);
 
-            if (Input.GetKey(KeyCode.E))
-            {
-                PlantTree();
-            }
+            
             if (plantCooldown > 0)
             {
                 plantCooldown -= Time.fixedDeltaTime;
@@ -252,6 +252,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            PlantTree(other);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -269,13 +277,11 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(health);
     }
 
-    public void PlantTree()
+    public void PlantTree(Collider2D other)
     {
         if(canPlant && scoreManager.seeds>0 && plantCooldown <= 0) {
             plantCooldown = plantCooldownMax;
-            Vector3 tree_position = this.transform.position;
-            tree_position.x -= 0.3f;
-            tree_position.y -= 0.2f;
+            Vector3 tree_position = other.transform.position;
             Instantiate(TreePrefab, tree_position, this.transform.rotation);
             scoreManager.SubstractSeeds(1);
             AddPoints(1);
@@ -301,11 +307,15 @@ public class PlayerController : MonoBehaviour
     {
         isInCave = true;
         GameManager.instance.ShowCaveText();
+        GlobalLight.SetActive(false);
+        CaveLight.SetActive(true);
     }
 
     private void LeavingCave()
     {
         isInCave = false;
         GameManager.instance.ShowCaveTextL();
+        GlobalLight.SetActive(true);
+        CaveLight.SetActive(false);
     }
 }
