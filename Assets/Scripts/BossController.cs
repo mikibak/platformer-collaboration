@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    public float speed;
     public int healthMax;
     public int health;
     public float timeBetweenAttacks;
@@ -31,6 +30,13 @@ public class BossController : MonoBehaviour
     public float deactivatedWindow = 2.0f;
     public float activatedWindow = 2.0f;
 
+    //movement
+    private Vector3 startPos;
+
+    public float speed = 1;
+    public float xScale = 1;
+    public float yScale = 1;
+
 
     private void Start()
     {
@@ -39,13 +45,14 @@ public class BossController : MonoBehaviour
         healthBar.SetHealth(health);
         cooldownBar.SetMaxHealth(timeBetweenAttacks);
         cooldownBar.SetHealth(timeBetweenAttacks);
+        startPos = transform.localPosition;
     }
 
     private void FixedUpdate()
     {
         timerAttacks -= Time.deltaTime;
         cooldownBar.SetHealth(timeBetweenAttacks - Mathf.Clamp(timerAttacks, 0f, timeBetweenAttacks));
-
+        transform.localPosition = startPos + (Vector3.right * Mathf.Sin(Time.timeSinceLevelLoad / 2 * speed) * xScale - Vector3.up * Mathf.Sin(Time.timeSinceLevelLoad * speed) * yScale);
 
         if (Vector3.Distance(transform.position, playerController.gameObject.transform.position) < maxRange)
         {
@@ -53,6 +60,7 @@ public class BossController : MonoBehaviour
             {
                 Debug.Log("shooting at player");
                 ShootBullet();
+                timeBetweenAttacks = Random.Range(3.0f, 6.0f);
                 timerAttacks = timeBetweenAttacks;
             }
         }
