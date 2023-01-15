@@ -12,6 +12,7 @@ public class FightController : MonoBehaviour
     Vector3 currentPosition;
     Vector3 enemyPosition;
     public EnemyController enemyController;
+    public BossController bossController;
     float closestDist;
     float attackCooldown = 2;
     public float timer = 0;
@@ -40,7 +41,8 @@ public class FightController : MonoBehaviour
             GetComponent<PlayerController>().audioSource.PlayOneShot( shootSound, AudioListener.volume/2 );
             Debug.Log("attacking closest enemy");
             GameObject target = GetClosestEnemy();
-            enemyController = target.GetComponent<EnemyController>();
+            if (target.name == "Boss") bossController = target.GetComponent<BossController>();
+            else enemyController = target.GetComponent<EnemyController>();
             Vector3 targetDirection = target.transform.position - transform.position;
 
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 2*Mathf.PI, 0.0f);
@@ -53,8 +55,8 @@ public class FightController : MonoBehaviour
             //velocityModule.speedModifierMultiplier = targetDirection.magnitude;
 
             gunTrail.Play();
-
-            enemyController.TakeDamage();
+            if (target.name == "Boss") bossController.TakeDamage();
+            else enemyController.TakeDamage();
             timer = attackCooldown;
         }
         else if (Input.GetKey(KeyCode.Q) && timer > 0)
