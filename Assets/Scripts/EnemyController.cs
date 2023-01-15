@@ -30,6 +30,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float bulletSpeed = 1;
     [SerializeField] private float maxRange = 5;
 
+    //shield
+    [SerializeField] private GameObject shield;
+    private bool shieldActivated;
+    private float shieldDectivatedTimer;
+    private float shieldActivatedTimer;
+    public float deactivatedWindow = 2.0f;
+    public float activatedWindow = 2.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +77,8 @@ public class EnemyController : MonoBehaviour
             timerAttacks = timeBetweenAttacks;
             }
         }
+
+        SetShield();
     }
 
     public void ChangeMovement()
@@ -93,6 +103,10 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage()
     {
+        if(shieldActivated) {
+            return;
+        }
+
         health--;
         healthBar.SetHealth(health);
         Debug.Log("Enemy health: " + health.ToString());
@@ -123,5 +137,36 @@ public class EnemyController : MonoBehaviour
         Vector2 newvector = direction.normalized * bulletSpeed;
         bulletRigidbody.velocity = newvector;
 
+    }
+
+    private void SetShield()
+    {
+        if(!shieldActivated) {
+            if(shieldDectivatedTimer >=0) 
+            {
+                shieldDectivatedTimer -= Time.fixedDeltaTime;
+            }else
+            {
+                //activate
+                shieldActivated = true;
+                shield.SetActive(true);
+                float roll = Random.Range(0.0f,1.0f);
+                shieldActivatedTimer = activatedWindow + roll;
+            }
+        }
+        else
+        {
+            //shield is active
+            if(shieldActivatedTimer >=0) 
+            {
+                shieldActivatedTimer -= Time.fixedDeltaTime;
+            }else
+            {
+                //deactivate
+                shieldActivated = false;
+                shield.SetActive(false);
+                shieldDectivatedTimer = deactivatedWindow;
+            }
+        }
     }
 }
