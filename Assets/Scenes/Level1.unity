@@ -21115,6 +21115,47 @@ MonoBehaviour:
   followBehind: 1
   rotationDamping: 10
   staticOffset: 1
+--- !u!95 &1416360713
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416360708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 061109d0f124b094ba789fd8f5d0062f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &1416360714
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416360708}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &1418089300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2792079318079715020, guid: 93b86c3248d356d42bc2fd249150f516, type: 3}
@@ -24413,7 +24454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa81005444b5baa4e91d8219316c4170, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9eb477208f2a3ba46aa5acb67da22994, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32498,6 +32539,22 @@ PrefabInstance:
     - target: {fileID: 616576426675382051, guid: 4ebe58aaa107116428bf33f4960648f1, type: 3}
       propertyPath: m_Name
       value: Friend
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497240899678286998, guid: 4ebe58aaa107116428bf33f4960648f1, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497240899678286998, guid: 4ebe58aaa107116428bf33f4960648f1, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497240899678286998, guid: 4ebe58aaa107116428bf33f4960648f1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497240899678286998, guid: 4ebe58aaa107116428bf33f4960648f1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6078381890198453530, guid: 4ebe58aaa107116428bf33f4960648f1, type: 3}
       propertyPath: m_RootOrder

@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
     //Friend
     public GameObject Friend;
+    public Rigidbody2D friendRB;
+    public bool isFriendFacingRight = false;
 
     //respawning
     [SerializeField] private Transform lastCheckpoint;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        friendRB = Friend.GetComponent<Rigidbody2D>();
         CaveLight.SetActive(false);
         CaveLightFriend.SetActive(false);
     }
@@ -138,6 +141,11 @@ public class PlayerController : MonoBehaviour
             {
                 LeavingCave();
             }
+
+            //friend fliping
+            //Vector3 friendVelocity = friendRB.velocity;
+            //if (friendVelocity.x > 0 && !isFriendFacingRight) FlipFriend();
+            //if (friendVelocity.x < 0 && isFriendFacingRight) FlipFriend();
         }
     }
 
@@ -172,6 +180,14 @@ public class PlayerController : MonoBehaviour
         thescale.x *= (-1);
         transform.localScale = thescale;
     }
+
+    //private void FlipFriend()
+    //{
+    //    isFriendFacingRight = !isFriendFacingRight;
+    //    Vector3 friendScale = Friend.transform.localScale;
+    //    friendScale.x *= (-1);
+    //    Friend.transform.localScale = friendScale;
+    //}
 
 
     public void Death()
