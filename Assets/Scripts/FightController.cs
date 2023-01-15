@@ -65,6 +65,7 @@ public class FightController : MonoBehaviour
 
     public GameObject GetClosestEnemy()
     {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject target = null;
         currentPosition = transform.position;
         closestDist = Mathf.Infinity;
