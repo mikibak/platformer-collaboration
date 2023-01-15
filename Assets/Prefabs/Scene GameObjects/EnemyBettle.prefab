@@ -137,7 +137,7 @@ Transform:
   m_Children:
   - {fileID: 6859958201871239528}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6136670767094011889
 SpriteRenderer:
@@ -217,7 +217,7 @@ MonoBehaviour:
   animator: {fileID: 6136670767094011887}
   bulletPrefab: {fileID: 484702610781695263, guid: 0515093a503942c4db3d3b5120418dac, type: 3}
   bulletSpeed: 2
-  maxRange: 3
+  maxRange: 2
 --- !u!95 &6136670767094011887
 Animator:
   serializedVersion: 4
