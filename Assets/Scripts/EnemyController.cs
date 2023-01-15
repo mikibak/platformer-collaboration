@@ -62,6 +62,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        maxRange = 5;
+        Debug.Log(timeBetweenAttacks);
+        Debug.Log(maxRange);
         timer -= Time.deltaTime;
         timerAttacks -= Time.deltaTime;
         cooldownBar.SetHealth(timeBetweenAttacks - Mathf.Clamp(timerAttacks, 0f, timeBetweenAttacks));
