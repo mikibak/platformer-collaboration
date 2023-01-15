@@ -25,12 +25,12 @@ public class EnemyController : MonoBehaviour
     public Animator animator;
 
     //shooting
-    //private bool inRange;
     public GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed = 1;
     [SerializeField] private float maxRange = 5;
 
     //shield
+    public bool usesShield = false;
     [SerializeField] private GameObject shield;
     private bool shieldActivated;
     private float shieldDectivatedTimer;
@@ -48,7 +48,6 @@ public class EnemyController : MonoBehaviour
         healthBar.SetHealth(health);
         cooldownBar.SetMaxHealth(timeBetweenAttacks);
         cooldownBar.SetHealth(timeBetweenAttacks);
-        //inRange = false;
     }
 
     // Update is called once per frame
@@ -69,7 +68,6 @@ public class EnemyController : MonoBehaviour
         }
 
         if(Vector3.Distance(transform.position, playerController.gameObject.transform.position) < maxRange) {
-            //inRange = true;
             if (timerAttacks <= 0)
             {
             Debug.Log("shooting at player");
@@ -78,7 +76,9 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        SetShield();
+        if(usesShield) {
+            SetShield();
+        }
     }
 
     public void ChangeMovement()
@@ -103,7 +103,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage()
     {
-        if(shieldActivated) {
+        if(usesShield && shieldActivated) {
             return;
         }
 

@@ -119,7 +119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7950502141920425873
 Transform:
   m_ObjectHideFlags: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 484702610781695263, guid: 0515093a503942c4db3d3b5120418dac, type: 3}
   bulletSpeed: 2
   maxRange: 2
+  usesShield: 0
   shield: {fileID: 4270748502482278073}
   deactivatedWindow: 2
   activatedWindow: 1
