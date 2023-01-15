@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
     public void ShowCheckpointText()
     {
         checkpointText.SetActive(true);
-        Invoke("HideCheckpointText", 3);
+        Invoke("HideCheckpointText", 1.5f);
     }
 
     private void HideCheckpointText()
