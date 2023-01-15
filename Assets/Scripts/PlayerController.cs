@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     //sound
     public AudioSource audioSource;
     public AudioClip coinSound;
+    public AudioClip trashSound;
+    public AudioClip keySound;
+    public AudioClip damageSound;
 
     //trees
     private bool canPlant;
@@ -214,12 +217,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Trash: " + trash);
             scoreManager.AddTrash(1);
             other.gameObject.SetActive(false);
+            audioSource.PlayOneShot( trashSound, AudioListener.volume );
         }
 
         if (other.CompareTag("Key"))
         {
             scoreManager.AddKey();
             other.gameObject.SetActive(false);
+            audioSource.PlayOneShot( keySound, AudioListener.volume );
         }
 
         if (other.CompareTag("MovingPlatform"))
@@ -280,6 +285,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        audioSource.PlayOneShot( damageSound, AudioListener.volume );
         health -= damage;
         healthBar.SetHealth(health);
 
