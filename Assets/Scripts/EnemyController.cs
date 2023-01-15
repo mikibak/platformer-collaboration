@@ -99,6 +99,7 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             Invoke("DestroyEnemy", 0.5f);
+            playerController.AddPoints(2);
             Death();
         }
     }

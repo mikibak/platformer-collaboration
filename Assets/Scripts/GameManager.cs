@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject controlsText;
     private bool controlsShown = false;
-    
+
     public GameObject player;
     private ScoreManager playerScoreManager;
     private PlayerController playerController;
@@ -36,7 +36,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject checkpointText;
 
-
+    //tutorial
+    public GameObject TutorialCanvas;
+    public GameObject TutText1;
+    public GameObject TutText2;
 
 
     private void Start()
@@ -47,31 +50,31 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(PlayerPrefs.HasKey(keyHighScore)==false) {
+        if (PlayerPrefs.HasKey(keyHighScore) == false) {
             PlayerPrefs.SetInt(keyHighScore, 0);
         }
         instance = this;
         DisableAllCanvases();
         //PauseMenuCanvas.enabled = true;
         ChangeQualityName();
-        InGame();
+        Tutorial();
         //volumeSlider.onValueChanged = SetVolume(volumeSlider.value);
 
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(currentGameState == GameState.GS_PAUSEMENU)
+            if (currentGameState == GameState.GS_PAUSEMENU)
             {
                 InGame();
             }
-            else if(currentGameState == GameState.GS_GAME)
+            else if (currentGameState == GameState.GS_GAME)
             {
                 PauseMenu();
             }
-            else if(currentGameState == GameState.GS_LEVELCOMPLETED)
+            else if (currentGameState == GameState.GS_LEVELCOMPLETED)
             {
                 LevelCompleted();
             }
@@ -98,6 +101,7 @@ public class GameManager : MonoBehaviour
         SetGameState(GameState.GS_PAUSEMENU);
         DisableAllCanvases();
         PauseMenuCanvas.enabled = true;
+        Time.timeScale = 0;
     }
 
     public void InGame()
@@ -113,9 +117,9 @@ public class GameManager : MonoBehaviour
         score = playerScoreManager.score + playerController.health;
         Scene currentScene;
         currentScene = SceneManager.GetActiveScene();
-        if(currentScene.name == "Level1") {
+        if (currentScene.name == "Level1") {
             highScore = PlayerPrefs.GetInt(keyHighScore);
-            if(highScore < score) {
+            if (highScore < score) {
                 Debug.Log("Setting Highscore");
                 PlayerPrefs.SetInt(keyHighScore, score);
                 highScore = score;
@@ -194,5 +198,26 @@ public class GameManager : MonoBehaviour
     private void HideCheckpointText()
     {
         checkpointText.SetActive(false);
+    }
+
+    public void Tutorial()
+    {
+        Time.timeScale = 0;
+        TutorialCanvas.SetActive(true);
+        TutText1.SetActive(true);
+        TutText2.SetActive(false);
+    }
+
+    public void nextTut()
+    {
+        TutText2.SetActive(true);
+        TutText1.SetActive(false);
+    }
+
+    public void EndTut()
+    {
+        TutorialCanvas.SetActive(false);
+        TutText2.SetActive(false);
+        InGame();
     }
 }

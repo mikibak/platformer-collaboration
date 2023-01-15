@@ -230,12 +230,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag("Soil"))
         {
-            PlantButton.SetActive(false);
-        }
-        if (other.CompareTag("Soil"))
-        {
             canPlant = false ;
-            PlantButton.SetActive(false);
         }
     }
 
@@ -264,6 +259,7 @@ public class PlayerController : MonoBehaviour
             tree_position.y -= 0.2f;
             Instantiate(TreePrefab, tree_position, this.transform.rotation);
             scoreManager.SubstractSeeds(1);
+            AddPoints(1);
         }
 
     }
@@ -275,5 +271,10 @@ public class PlayerController : MonoBehaviour
         newPos.Translate(0, 0.2f, 0);
         Friend.GetComponent<Pathfinding.Examples.AstarSmoothFollow2>().target = newPos.transform;
         respawning = true;
+    }
+
+    public void AddPoints(int points)
+    {
+        scoreManager.AddPoints(points);
     }
 }
