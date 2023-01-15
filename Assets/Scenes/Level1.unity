@@ -3616,7 +3616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &182550196
@@ -3632,7 +3632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4091,7 +4091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &199642352
@@ -4107,7 +4107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4127,7 +4127,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Plant trees on soils
+  m_Text: Plant trees on soil
 --- !u!222 &199642353
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10970,7 +10970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &582916350
@@ -10986,7 +10986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11006,7 +11006,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You also have a pinguin friend. If you fall he will catch you and bring
+  m_Text: You also have a penguin friend. If you fall he will catch you and bring
     to the last checkpoint.
 --- !u!222 &582916351
 CanvasRenderer:
@@ -16756,7 +16756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e04cf4b26c4ca074ea29681c46fb3e45, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23571,7 +23571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &1293225490
@@ -23587,7 +23587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23609,7 +23609,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Due to Global Warming the Earth is close to death. \nYou just came back
     from another planet with a secret recipe for a sapling that can save the planet
-    but you need some ingridients for it."
+    but you need some ingredients for it."
 --- !u!222 &1293225491
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23674,7 +23674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &1296619875
@@ -23690,7 +23690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -24532,7 +24532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -30117,7 +30117,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 290.04, y: 268.611}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1635211389
 MonoBehaviour:
@@ -30139,7 +30139,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa81005444b5baa4e91d8219316c4170, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9eb477208f2a3ba46aa5acb67da22994, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32157,7 +32157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &1735889273
@@ -32173,7 +32173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -33522,7 +33522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -34914,7 +34914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &1901527906
@@ -34930,7 +34930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -35079,7 +35079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &1912645901
@@ -35095,7 +35095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -35115,7 +35115,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: I think you're ready. Good luck.
+  m_Text: I think you're ready. Good luck!
 --- !u!222 &1912645902
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35638,7 +35638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0.5}
   m_EffectDistance: {x: 0, y: 0}
   m_UseGraphicAlpha: 1
 --- !u!114 &1943108936
@@ -35654,7 +35654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -35674,7 +35674,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collect heart points when drone hits you
+  m_Text: Collect heart points to heal your wounds
 --- !u!222 &1943108937
 CanvasRenderer:
   m_ObjectHideFlags: 0
