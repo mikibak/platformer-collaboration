@@ -99,20 +99,6 @@ public class EnemyController : MonoBehaviour
         timer = durationOfCycle;
     }
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Player") && timerAttacks <= 0)
-    //    {
-    //        Debug.Log("attacking player");
-    //        playerController.TakeDamage(1);
-    //        timerAttacks = timeBetweenAttacks;
-    //    }
-    //    else if(timerAttacks > 0 && other.CompareTag("Player"))
-    //    {
-    //        Debug.Log("enemy attack cooldown");
-    //    }
-    //}
-
     public void TakeDamage()
     {
         if(usesShield && shieldActivated) {

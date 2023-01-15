@@ -32,10 +32,14 @@ public class BossController : MonoBehaviour
 
     //movement
     private Vector3 startPos;
-
     public float speed = 1;
     public float xScale = 1;
     public float yScale = 1;
+
+    //sound
+    public AudioClip shootSound;
+    public AudioClip deathSound;
+    public AudioSource audioSource;
 
 
     private void Start()
@@ -98,11 +102,13 @@ public class BossController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        playerController.audioSource.PlayOneShot(deathSound, AudioListener.volume);
         this.gameObject.SetActive(false);
     }
 
     private void ShootBullet()
     {
+        audioSource.PlayOneShot(shootSound, AudioListener.volume / 2);
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation, null);
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
         Vector2 direction = playerController.gameObject.transform.position - transform.position;
