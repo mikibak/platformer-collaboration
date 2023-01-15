@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     bool isInCave = false;
     public GameObject GlobalLight;
     public GameObject CaveLight;
+    public GameObject CaveLightFriend;
 
     private void Awake()
     {
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         CaveLight.SetActive(false);
+        CaveLightFriend.SetActive(false);
     }
     void Start()
     {
@@ -309,6 +311,7 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.ShowCaveText();
         GlobalLight.SetActive(false);
         CaveLight.SetActive(true);
+        CaveLightFriend.SetActive(true);
     }
 
     private void LeavingCave()
@@ -317,5 +320,6 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.ShowCaveTextL();
         GlobalLight.SetActive(true);
         CaveLight.SetActive(false);
+        CaveLightFriend.SetActive(false);
     }
 }
