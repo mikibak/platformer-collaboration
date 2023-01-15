@@ -1,27 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
-public class EnemyController : MonoBehaviour
+public class BossController : MonoBehaviour
 {
-    
     public float speed;
-    public int direction; //direction can be 0 - horizontal, 1 - vertical
-    public float durationOfCycle;
-    public int healthStart;
+    public int healthMax;
     public int health;
     public float timeBetweenAttacks;
-    private int moveDir = 1;
-    private int randomDirection;
-    public float timer;
     public float timerAttacks = 0;
 
     public PlayerController playerController;
     public HealthBar healthBar;
     public HealthBar cooldownBar;
 
+    //animator
     public Animator animator;
 
     //shooting
@@ -30,7 +23,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float maxRange = 5;
 
     //shield
-    public bool usesShield = false;
+    public bool usesShield = true;
     [SerializeField] private GameObject shield;
     private bool shieldActivated;
     private float shieldDectivatedTimer;
@@ -39,10 +32,8 @@ public class EnemyController : MonoBehaviour
     public float activatedWindow = 2.0f;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        timer = durationOfCycle;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         healthBar.SetMaxHealth(health);
         healthBar.SetHealth(health);
@@ -50,60 +41,33 @@ public class EnemyController : MonoBehaviour
         cooldownBar.SetHealth(timeBetweenAttacks);
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        timer -= Time.deltaTime;
         timerAttacks -= Time.deltaTime;
         cooldownBar.SetHealth(timeBetweenAttacks - Mathf.Clamp(timerAttacks, 0f, timeBetweenAttacks));
-        if (timer <= 0) ChangeMovement();
 
-        if (direction == 0)
-        {
-            transform.Translate(moveDir * speed * Time.fixedDeltaTime, 0.0f, 0.0f, Space.World);
-        }
-        else if (direction == 1)
-        {
-            transform.Translate(0.0f, moveDir * speed * Time.fixedDeltaTime, 0.0f, Space.World);
-        }
 
-        if(Vector3.Distance(transform.position, playerController.gameObject.transform.position) < maxRange) {
+        if (Vector3.Distance(transform.position, playerController.gameObject.transform.position) < maxRange)
+        {
             if (timerAttacks <= 0)
             {
-            Debug.Log("shooting at player");
-            ShootBullet();
-            timerAttacks = timeBetweenAttacks;
+                Debug.Log("shooting at player");
+                ShootBullet();
+                timerAttacks = timeBetweenAttacks;
             }
         }
 
-        if(usesShield) {
+
+        if (usesShield)
+        {
             SetShield();
         }
     }
 
-    public void ChangeMovement()
-    {
-        moveDir *= (-1);
-        timer = durationOfCycle;
-    }
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Player") && timerAttacks <= 0)
-    //    {
-    //        Debug.Log("attacking player");
-    //        playerController.TakeDamage(1);
-    //        timerAttacks = timeBetweenAttacks;
-    //    }
-    //    else if(timerAttacks > 0 && other.CompareTag("Player"))
-    //    {
-    //        Debug.Log("enemy attack cooldown");
-    //    }
-    //}
-
     public void TakeDamage()
     {
-        if(usesShield && shieldActivated) {
+        if (usesShield && shieldActivated)
+        {
             return;
         }
 
@@ -131,7 +95,7 @@ public class EnemyController : MonoBehaviour
 
     private void ShootBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation, null); 
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation, null);
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
         Vector2 direction = playerController.gameObject.transform.position - transform.position;
         Vector2 newvector = direction.normalized * bulletSpeed;
@@ -141,26 +105,29 @@ public class EnemyController : MonoBehaviour
 
     private void SetShield()
     {
-        if(!shieldActivated) {
-            if(shieldDectivatedTimer >=0) 
+        if (!shieldActivated)
+        {
+            if (shieldDectivatedTimer >= 0)
             {
                 shieldDectivatedTimer -= Time.fixedDeltaTime;
-            }else
+            }
+            else
             {
                 //activate
                 shieldActivated = true;
                 shield.SetActive(true);
-                float roll = Random.Range(0.0f,1.0f);
+                float roll = Random.Range(0.0f, 1.0f);
                 shieldActivatedTimer = activatedWindow + roll;
             }
         }
         else
         {
             //shield is active
-            if(shieldActivatedTimer >=0) 
+            if (shieldActivatedTimer >= 0)
             {
                 shieldActivatedTimer -= Time.fixedDeltaTime;
-            }else
+            }
+            else
             {
                 //deactivate
                 shieldActivated = false;
