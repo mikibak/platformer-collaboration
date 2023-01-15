@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
             //inRange = true;
             if (timerAttacks <= 0)
             {
-            Debug.Log("shotting at player");
+            Debug.Log("shooting at player");
             ShootBullet();
             timerAttacks = timeBetweenAttacks;
             }
