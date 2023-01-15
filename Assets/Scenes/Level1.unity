@@ -7766,7 +7766,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 044665a504e1e85469c25bc1894e6f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c3f0ce94e41d604429ea72e86271a4d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7941,7 +7941,7 @@ PrefabInstance:
       objectReference: {fileID: 707406623}
     - target: {fileID: 6136670767094011891, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
       propertyPath: m_Name
-      value: EnemyBettle
+      value: EnemyBettle7
       objectReference: {fileID: 0}
     - target: {fileID: 7486654336440403693, guid: 58ff70bc550d0fa4087ad140b6035b59, type: 3}
       propertyPath: m_AnchorMax.x
