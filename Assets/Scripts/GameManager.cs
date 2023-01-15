@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public Text highScoreText;
     private string qualityName;
 
+    public GameObject checkpointText;
+
 
 
 
@@ -181,5 +183,16 @@ public class GameManager : MonoBehaviour
     public void SetVolume()
     {
         AudioListener.volume = volumeSlider.value;
+    }
+
+    public void ShowCheckpointText()
+    {
+        checkpointText.SetActive(true);
+        Invoke("HideCheckpointText", 3);
+    }
+
+    private void HideCheckpointText()
+    {
+        checkpointText.SetActive(false);
     }
 }

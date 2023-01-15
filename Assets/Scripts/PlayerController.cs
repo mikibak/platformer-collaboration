@@ -202,6 +202,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag("Checkpoint"))
         {
+            GameManager.instance.ShowCheckpointText();
             lastCheckpoint = other.transform;
             spriteRenderer = other.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = grownCheckpoint;
