@@ -42,6 +42,10 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int shields = PlayerPrefs.GetInt("shield");
+        if(shields == 1) {
+            usesShield = true;
+        }
         timer = durationOfCycle;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         healthBar.SetMaxHealth(health);
