@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bonus
+  - attack
+  - Enemy
+  - Bullet
+  - Trash
+  - Checkpoint
+  - MovingPlatform
+  - Key
+  - HealthPoint
+  - Soil
   layers:
   - Default
   - TransparentFX

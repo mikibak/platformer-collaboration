@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     private int seeds = 0;
     public GameObject plantText;
     public GameObject attackText;
+    public float plantCooldown;
+    public float plantCooldownMax = 1;
 
     //Friend
     public GameObject Friend;
@@ -53,6 +55,8 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite grownCheckpoint;
 
+    //CAVE
+    bool isInCave = false;
 
     private void Awake()
     {
@@ -104,7 +108,7 @@ public class PlayerController : MonoBehaviour
                 if (health >= 1)
                 {
                     Respawn();
-                } else 
+                } else
                 {
                     Death();
                 }
@@ -117,6 +121,20 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 PlantTree();
+            }
+            if (plantCooldown > 0)
+            {
+                plantCooldown -= Time.fixedDeltaTime;
+            }
+
+            if(this.transform.position.x >=17 && this.transform.position.x <30 && !isInCave)
+            {
+                EnteringCave();
+            }
+
+            if (this.transform.position.x >= 32 && isInCave)
+            {
+                LeavingCave();
             }
         }
     }
@@ -253,7 +271,8 @@ public class PlayerController : MonoBehaviour
 
     public void PlantTree()
     {
-        if(canPlant && scoreManager.seeds>0) {
+        if(canPlant && scoreManager.seeds>0 && plantCooldown <= 0) {
+            plantCooldown = plantCooldownMax;
             Vector3 tree_position = this.transform.position;
             tree_position.x -= 0.3f;
             tree_position.y -= 0.2f;
@@ -276,5 +295,17 @@ public class PlayerController : MonoBehaviour
     public void AddPoints(int points)
     {
         scoreManager.AddPoints(points);
+    }
+
+    private void EnteringCave()
+    {
+        isInCave = true;
+        GameManager.instance.ShowCaveText();
+    }
+
+    private void LeavingCave()
+    {
+        isInCave = false;
+        GameManager.instance.ShowCaveTextL();
     }
 }

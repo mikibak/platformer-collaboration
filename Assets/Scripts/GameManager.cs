@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
     public GameObject TutText2;
 
 
+    //cave
+    public GameObject caveText;
+    public GameObject caveTextLeaving;
+
     private void Start()
     {
         playerScoreManager = player.GetComponent<ScoreManager>();
@@ -219,5 +223,27 @@ public class GameManager : MonoBehaviour
         TutorialCanvas.SetActive(false);
         TutText2.SetActive(false);
         InGame();
+    }
+
+    public void ShowCaveText()
+    {
+        caveText.SetActive(true);
+        Invoke("HideCaveText", 5);
+    }
+
+    public void HideCaveText()
+    {
+        caveText.SetActive(false);
+    }
+
+    public void ShowCaveTextL()
+    {
+        caveTextLeaving.SetActive(true);
+        Invoke("HideCaveTextL", 5);
+    }
+
+    public void HideCaveTextL()
+    {
+        caveTextLeaving.SetActive(false);
     }
 }

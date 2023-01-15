@@ -16,6 +16,8 @@ public class ScoreManager : MonoBehaviour
     int maxKeys;
     public DoorsController doorsController;
 
+    public GameObject newSeedText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +39,10 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
+            newSeedText.SetActive(true);
             trash = 0;
             AddSeeds(1);
+            Invoke("HideSeedText", 3);
         }
         trashText.text = "TRASH: " + trash.ToString();
     }
@@ -71,5 +75,10 @@ public class ScoreManager : MonoBehaviour
         maxKeys = max;
         keysText.text = "KEYS: " + keys.ToString() + "/" + maxKeys.ToString();
 
+    }
+
+    private void HideSeedText()
+    {
+        newSeedText.SetActive(false);
     }
 }
