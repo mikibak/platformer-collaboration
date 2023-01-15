@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip trashSound;
     public AudioClip keySound;
     public AudioClip damageSound;
+    public AudioClip treeSound;
 
     //trees
     private bool canPlant;
@@ -259,6 +260,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag("Bullet"))
         {
+            audioSource.PlayOneShot( damageSound, AudioListener.volume );
             TakeDamage(1);
             Destroy(other.gameObject);
         }
@@ -285,7 +287,6 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        audioSource.PlayOneShot( damageSound, AudioListener.volume );
         health -= damage;
         healthBar.SetHealth(health);
 
@@ -304,6 +305,7 @@ public class PlayerController : MonoBehaviour
     public void PlantTree(Collider2D other)
     {
         if(canPlant && scoreManager.seeds>0 && plantCooldown <= 0) {
+            audioSource.PlayOneShot( treeSound, AudioListener.volume );
             plantCooldown = plantCooldownMax;
             Vector3 tree_position = other.transform.position;
             Instantiate(TreePrefab, tree_position, this.transform.rotation);

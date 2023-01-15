@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class FightController : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class FightController : MonoBehaviour
     private ParticleSystem.VelocityOverLifetimeModule velocityModule;
     public GameObject gun;
     public Slider staminaSlider;
+    public AudioClip shootSound;
 
     
     // Start is called before the first frame update
@@ -34,6 +37,7 @@ public class FightController : MonoBehaviour
         timer -= Time.deltaTime;
         if(Input.GetKey(KeyCode.Q) && timer <=0)
         {
+            GetComponent<PlayerController>().audioSource.PlayOneShot( shootSound, AudioListener.volume/2 );
             Debug.Log("attacking closest enemy");
             GameObject target = GetClosestEnemy();
             enemyController = target.GetComponent<EnemyController>();

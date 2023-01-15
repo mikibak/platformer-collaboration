@@ -178,8 +178,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   keysText: {fileID: 0}
+  trashText: {fileID: 0}
+  seedText: {fileID: 0}
   score: 0
+  trash: 0
+  seeds: 0
   doorsController: {fileID: 0}
+  newSeedText: {fileID: 0}
 --- !u!114 &5590058249209089475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,8 +200,11 @@ MonoBehaviour:
   enemies: []
   playerController: {fileID: 6868472231690211266}
   enemyController: {fileID: 0}
+  timer: 0
   gunTrail: {fileID: 2572822923427993324}
   gun: {fileID: 7848300346629575540}
+  staminaSlider: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 281e15cc92254794eaf05caf4d044b76, type: 3}
 --- !u!114 &6868472231690211266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +229,27 @@ MonoBehaviour:
   health: 0
   healthBar: {fileID: 0}
   audioSource: {fileID: 1857551723959523227}
-  coinSound: {fileID: 8300000, guid: 616cf7f5cffb52e4caa0df9070ee4067, type: 3}
+  coinSound: {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
+  trashSound: {fileID: 8300000, guid: 7e58c1718e011c847949792efd486a17, type: 3}
+  keySound: {fileID: 8300000, guid: dca3084cb66e8824bab682c584bec504, type: 3}
+  damageSound: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
+  treeSound: {fileID: 8300000, guid: b190a8a5f59499f4f9204e64b9a04da9, type: 3}
+  PlantButton: {fileID: 0}
+  TreePrefab: {fileID: 0}
+  plantText: {fileID: 0}
+  attackText: {fileID: 0}
+  plantCooldown: 0
+  plantCooldownMax: 1
+  Friend: {fileID: 0}
+  friendRB: {fileID: 0}
+  isFriendFacingRight: 0
+  lastCheckpoint: {fileID: 0}
+  respawning: 0
+  spriteRenderer: {fileID: 0}
+  grownCheckpoint: {fileID: 0}
+  GlobalLight: {fileID: 0}
+  CaveLight: {fileID: 0}
+  CaveLightFriend: {fileID: 0}
 --- !u!82 &1857551723959523227
 AudioSource:
   m_ObjectHideFlags: 0

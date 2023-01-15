@@ -38,6 +38,11 @@ public class EnemyController : MonoBehaviour
     public float deactivatedWindow = 2.0f;
     public float activatedWindow = 2.0f;
 
+    //sound
+    public AudioClip shootSound;
+    public AudioClip deathSound;
+    public AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
@@ -130,11 +135,13 @@ public class EnemyController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        playerController.audioSource.PlayOneShot( deathSound, AudioListener.volume );
         this.gameObject.SetActive(false);
     }
 
     private void ShootBullet()
     {
+        audioSource.PlayOneShot( shootSound, AudioListener.volume/2 );
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation, null); 
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
         Vector2 direction = playerController.gameObject.transform.position - transform.position;
