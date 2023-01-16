@@ -302,9 +302,12 @@ MonoBehaviour:
   shield: {fileID: 3342462702083225358}
   deactivatedWindow: 2
   activatedWindow: 2
-  speed: 2.5
-  xScale: 2.5
+  speed: 2
+  xScale: 2
   yScale: 2
+  shootSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!95 &3342462702776224353
 Animator:
   serializedVersion: 4
