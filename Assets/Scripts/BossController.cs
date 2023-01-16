@@ -96,7 +96,7 @@ public class BossController : MonoBehaviour
 
     private void Death()
     {
-        Debug.Log("Enemy dead");
+        Debug.Log("BOSS dead");
         animator.SetBool("isDead", true);
     }
 
