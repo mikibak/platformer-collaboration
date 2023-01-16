@@ -28,11 +28,6 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadSceneAsync("Level1");
     }
 
-    public void OnLevelTwoButtonPress ()
-    {
-        SceneManager.LoadSceneAsync("Level2");
-    }
-
     public void OnExitToDesktopButtonPressed ()
     {
         #if UNITY_EDITOR 
